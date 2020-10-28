@@ -1,0 +1,25 @@
+{
+    "name" : "Math",
+    "base": "defects4j checkout -p Math -v 1f -w MathBase",
+    "base_folder": "MathBase",
+    "build": "cd .. && ./_configFiles/mathFiles/build.sh",
+    "test"   : "mvn test",
+    "one_test": "mvn -Dtest=GetMetricsTest -DtoTest=%s test",
+    "reports_path": "target/surefire-reports",
+    "metrics_path": "target/surefire-reports/org.apache.commons.GetMetricsTest-output.txt",
+    "test_path": "src/test/java",
+    "exclude": [
+        ".*DiscreteRealDistributionTest.*",
+        ".*MultiStartUnivariateRealOptimizerTest.*",
+        ".*EigenDecompositionImplTest.*",
+        ".*MultiDirectionalTest.*",
+        ".*MultiDirectionalTest.*",
+        ".*CholeskyDecompositionImplTest.*",
+        ".*BigMatrixImplTest.*",
+        ".*RealMatrixImplTest.*",
+        ".*GaussNewtonEstimatorTest.*",
+        ".*ChiSquareFactoryTest.*",
+        ".*ChiSquareFactoryTest.*",
+        "GetMetricsTest"
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "name" : "Time",
+    "base": "defects4j checkout -p Time -v 1f -w TimeBase",
+    "base_folder": "TimeBase",
+    "build": "cd .. && ./_configFiles/timeFiles/build.sh",
+    "test"   : "mvn test",
+    "one_test": "mvn -Dtest=GetMetrics -DtestClass=%s test",
+    "reports_path": "target/surefire-reports",
+    "metrics_path": "target/surefire-reports/org.joda.time.GetMetrics-output.txt",
+    "test_path": "src/test/java",
+    "exclude": [
+        "TestAll.*",
+        ".*GetMetrics.*"
+    ]
+}

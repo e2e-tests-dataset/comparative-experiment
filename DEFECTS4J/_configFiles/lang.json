@@ -1,0 +1,14 @@
+{
+    "name" : "Lang",
+    "base": "defects4j checkout -p Lang -v 1f -w LangBase",
+    "base_folder": "LangBase",
+    "build": "cd .. && ./_configFiles/langFiles/build.sh",
+    "test"   : "mvn test",
+    "one_test": "mvn -Dtest=GetMetricsTest -DtoTest=%s test",
+    "reports_path": "target/surefire-reports",
+    "metrics_path": "target/surefire-reports/org.apache.commons.GetMetricsTest-output.txt",
+    "test_path": "src/test/java",
+    "exclude": [
+        "GetMetricsTest"
+    ]
+}

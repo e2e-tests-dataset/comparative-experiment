@@ -1,0 +1,14 @@
+{
+    "name" : "Chart",
+    "base": "defects4j checkout -p Chart -v 1f -w ChartBase",
+    "base_folder": "ChartBase",
+    "build": "cd .. && ./_configFiles/chartFiles/build.sh",
+    "test"   : "ant -f ant/build.xml test",
+    "one_test": "ant -f ant/build.xml -DtestClass=\"%s\" test-only",
+    "reports_path": "build-tests-reports",
+    "metrics_path": "metrics-results/TEST-org.jfree.GetMetrics.xml",
+    "test_path": "tests",
+    "exclude": [
+        ".*PackageTests.*"
+    ]
+}

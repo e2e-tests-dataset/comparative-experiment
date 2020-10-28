@@ -1,0 +1,5 @@
+scipy==0.19.1
+xxhash==1.0.1
+pandas
+numpy
+matplotlib
