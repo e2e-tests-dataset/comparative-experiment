@@ -1,8 +1,8 @@
 {
     "name" : "Chart",
-    "base": "defects4j checkout -p Chart -v 1f -w ChartBase",
-    "base_folder": "ChartBase",
-    "build": "cd .. && ./_configFiles/chartFiles/build.sh",
+    "base": "defects4j checkout -p Chart -v 1f -w /tmp/ChartBase",
+    "base_folder": "/tmp/ChartBase",
+    "build": "sh /home/ubuntu/defects4j./_configFiles/chartFiles/build.sh",
     "test"   : "ant -f ant/build.xml test",
     "one_test": "ant -f ant/build.xml -DtestClass=\"%s\" test-only",
     "reports_path": "build-tests-reports",

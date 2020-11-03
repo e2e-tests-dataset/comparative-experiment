@@ -1,8 +1,8 @@
 {
     "name" : "Math",
-    "base": "defects4j checkout -p Math -v 1f -w MathBase",
-    "base_folder": "MathBase",
-    "build": "cd .. && ./_configFiles/mathFiles/build.sh",
+    "base": "defects4j checkout -p Math -v 1f -w /tmp/MathBase",
+    "base_folder": "/tmp/MathBase",
+    "build": "sh /home/ubuntu/defects4j/_configFiles/mathFiles/build.sh",
     "test"   : "mvn test",
     "one_test": "mvn -Dtest=GetMetricsTest -DtoTest=%s test",
     "reports_path": "target/surefire-reports",

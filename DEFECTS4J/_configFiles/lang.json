@@ -1,8 +1,8 @@
 {
     "name" : "Lang",
-    "base": "defects4j checkout -p Lang -v 1f -w LangBase",
-    "base_folder": "LangBase",
-    "build": "cd .. && ./_configFiles/langFiles/build.sh",
+    "base": "defects4j checkout -p Lang -v 1f -w /tmp/LangBase",
+    "base_folder": "/tmp/LangBase",
+    "build": "sh /home/ubuntu/defects4j/_configFiles/langFiles/build.sh",
     "test"   : "mvn test",
     "one_test": "mvn -Dtest=GetMetricsTest -DtoTest=%s test",
     "reports_path": "target/surefire-reports",

@@ -1,5 +1,8 @@
-cp _configFiles/mathFiles/pom.xml MathBase/pom.xml
-cp _configFiles/mathFiles/GetMetricsTest.java MathBase/src/test/java/org/apache/commons/GetMetricsTest.java
+PROJECT_FOLDER=/tmp/MathBase
+BASE_FOLDER=/home/ubuntu/defects4j
+cd /tmp/MathBase/ && git checkout trunk
+cp $BASE_FOLDER/_configFiles/mathFiles/pom.xml $PROJECT_FOLDER/pom.xml
+cp $BASE_FOLDER/_configFiles/mathFiles/GetMetricsTest.java $PROJECT_FOLDER/src/test/java/org/apache/commons/GetMetricsTest.java
 
 # FOR BUG 8
 # cp _configFiles/mathFiles/tests/DiscreteRealDistributionTest.java MathBase/src/test/java/org/apache/commons/math3/distribution/DiscreteRealDistributionTest.java

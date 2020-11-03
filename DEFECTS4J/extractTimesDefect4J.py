@@ -6,7 +6,7 @@ import sys
 import xml.etree.ElementTree
 import pprint
 import re 
-import cPickle as pickle
+import pickle
 import shutil
 from operator import attrgetter
 import json
@@ -38,11 +38,13 @@ class ExtractorManager:
     def __init__(self, project):
         
         self.project = project
-        self.folder_name = self.project['name'].lower()+"_v0"
+        self.folder_name = "/home/ubuntu/defects4j/results/"+self.project['name']
         self.init_folder = os.getcwd()
         
         if os.path.exists(self.folder_name):
-            shutil.rmtree(self.folder_name)
+            print("Results for project %s already exist" %
+                  self.project['name'])
+            exit(0)
         os.mkdir(self.folder_name)
         
         self.bbox = ""
@@ -50,22 +52,22 @@ class ExtractorManager:
         self.times_avg= ""
         self.cpu=""
         self.mem=""
+        self.n = 1
         self.fault_matrix = dict()
         self.tcs = dict()
-        self.n=1
         self.pm = ProcessManager(open(join(self.folder_name, 'outputs.log'), 'w+'))
         self.project['n_bugs'] = int(self.pm.runAndGetOutput("defects4j info -p %s | grep 'Number of bugs:' | cut -d':' -f2" % project['name']))
     
     def create_and_test(self, folder, change_version_command):
-        print "> Getting version %s" % folder
+        print("> Getting version %s" % folder)
         if os.path.exists( folder ):
-            print "> Project available: %s" % folder
-            os.chdir(os.getcwd()+"/"+folder)
+            print("> Project available: %s" % folder)
+            os.chdir(folder)
         else:
             self.pm.call(change_version_command)
-            os.chdir(os.getcwd()+"/"+folder)
+            os.chdir(folder)
             self.pm.call(self.project['build'])
-            print "> Running test: %s" % folder
+            print("> Running test: %s" % folder)
             self.pm.call(self.project['test'])
     
     def safeClose(self):
@@ -75,16 +77,16 @@ class ExtractorManager:
 
     def runTestForMapClasses(self):
 
-        print "\033[95mProject: %s \033[0m" % self.project['name']
+        print("\033[95mProject: %s \033[0m" % self.project['name'])
 
         self.create_and_test(self.project['base_folder'], self.project['base'])
 
         reports = listdir(self.project['reports_path'])
         reports.sort()
-
         for report in reports:
             if report.endswith('.xml'):
-                root = xml.etree.ElementTree.parse(join(self.project['reports_path'],report)).getroot()
+                root = xml.etree.ElementTree.parse(
+                    join(self.project['reports_path'], report)).getroot()
                 suit_name = root.get('name')
 
                 # FILTER
@@ -94,12 +96,13 @@ class ExtractorManager:
                         m = re.search(ex, suit_name)
                         if m is not None and m.group(0):
                             excluded = True
-                if excluded: continue 
-                
+                if excluded:
+                    continue
+
                 try:
                     # ADD BBOX
-                    with open(join(self.project['test_path'], suit_name.replace('.','/')+".java"), "r+") as code_file:  
-                        self.bbox += code_file.read().replace("\n"," ").replace("\r"," ") +'\n'
+                    with open(join(self.project['test_path'], suit_name.replace('.', '/')+".java"), "r+") as code_file:
+                        self.bbox += code_file.read().replace("\n", " ").replace("\r", " ") + '\n'
                      # ADD TIME
                     self.times += root.get('time')+'\n'
                     # SAVE TO GET FAULT MATRIX
@@ -110,30 +113,11 @@ class ExtractorManager:
                     self.n = self.n+1
                 except IOError as err:
                     # Except when exist a class in another class, i.e. SpecializeModuleTest$SpecializeModuleSpecializationStateTest.java
-                    print "> Can't include %s TC" % suit_name
+                    print("> Can't include %s TC" % suit_name)
                     continue
 
-        #os.chdir(self.init_folder)
-    
-    def getFaultMatrix(self):
-        for n in xrange(self.project['n_bugs']):
-            bug_id = n+1 # FIRST BUG 1, NOT 0
-            tc_classes = self.pm.runAndGetOutput("defects4j info -p %s -b %d | grep -oP \" \- \K(.+)::\" | cut -d\":\" -f1" % (self.project['name'], bug_id) )
-
-            for tc_class in [ x for x in tc_classes.split('\n') if len(x) > 1]:
-                tc_class = self.fix(tc_class.strip())
-                if tc_class in self.tcs.keys():
-                    tc_id = self.tcs[tc_class]['id']
-                    if not bug_id in self.fault_matrix:
-                        self.fault_matrix[bug_id] = [tc_id]
-                    else:
-                        if not tc_id in self.fault_matrix[bug_id]: # MULTIPLES FAILS IN SAME CLASS
-                            self.fault_matrix[bug_id].append(tc_id)
-                else:
-                    print("Can't found class %s for bug %d"%(tc_class, bug_id))
-
     def getMetrics(self):
-        print "> Running test for get metrics"
+        print("> Running test for get metrics")
         for tc in sorted(self.tcs.values(), key=lambda k: k['id']):
             self.pm.call("pkill java")
             self.pm.call(self.project['one_test'] % tc['name'])
@@ -158,7 +142,7 @@ class ExtractorManager:
             self.cpu += cpu + '\n'
             self.mem += mem + '\n'
             self.times_avg += time + '\n'
-            print "      \033[90m> %s \033[0m" % tc['name']
+            print("      \033[90m> %s \033[0m" % tc['name'])
     
     def fix(self, tc_class):
         if(self.project['name'] == "Math"):
@@ -168,18 +152,12 @@ class ExtractorManager:
 
     def save(self):
         self.safeClose()
-        with open( join(self.folder_name, self.project['name'].lower()+"-bbox.txt"), "w+") as out:
-            out.write(self.bbox)
-        with open( join(self.folder_name,"times.txt"), "wb" ) as tm:
-            tm.write(self.times)
-        with open( join(self.folder_name,"times_avg.txt"), "wb" ) as tma:
+        with open( join(self.folder_name,"times_avg.txt"), "w" ) as tma:
             tma.write(self.times_avg)
-        with open( join(self.folder_name,"cpu.txt"), "wb" ) as cpu:
+        with open( join(self.folder_name,"cpu.txt"), "w" ) as cpu:
             cpu.write(self.cpu)
-        with open( join(self.folder_name,"mem.txt"), "wb" ) as mem:
+        with open( join(self.folder_name,"mem.txt"), "w" ) as mem:
             mem.write(self.mem)
-        with open( join(self.folder_name,"fault_matrix.pickle"), "wb" ) as fm:
-            pickle.dump( self.fault_matrix , fm )
 
 if __name__ == "__main__":
 
@@ -190,6 +168,5 @@ if __name__ == "__main__":
 
     em = ExtractorManager(config)
     em.runTestForMapClasses()
-    em.getFaultMatrix()
     em.getMetrics()
     em.save()
