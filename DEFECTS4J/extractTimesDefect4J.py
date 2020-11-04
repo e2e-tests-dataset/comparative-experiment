@@ -162,7 +162,7 @@ class ExtractorManager:
 if __name__ == "__main__":
 
     if len(sys.argv) != 2:
-        print("Use: python extractTimesDefect4J.py <config_file>")
+        print("Use: python3 extractTimesDefect4J.py <config_file>")
         exit()
     config = json.load(open(sys.argv[1]))
 

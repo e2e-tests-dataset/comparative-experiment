@@ -131,4 +131,4 @@ dmypy.json
 # Java
 .project
 .settings/
-.claspath
+.classpath
