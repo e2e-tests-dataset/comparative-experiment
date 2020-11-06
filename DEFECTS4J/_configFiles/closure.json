@@ -1,8 +1,8 @@
 {
     "name" : "Closure",
-    "base": "defects4j checkout -p Closure -v 1f -w ClosureBase",
-    "base_folder": "ClosureBase",
-    "build": "cd .. && ./_configFiles/closureFiles/build.sh",
+    "base": "defects4j checkout -p Closure -v 1f -w /tmp/ClosureBase",
+    "base_folder": "/tmp/ClosureBase",
+    "build": "sh /home/ubuntu/defects4j/_configFiles/closureFiles/build.sh",
     "test" : "ant test",
     "one_test": "ant -Dtest.class=GetMetrics -Dto.test=%s test",
     "reports_path": "build/testoutput",
