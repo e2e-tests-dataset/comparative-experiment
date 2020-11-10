@@ -103,5 +103,5 @@ if __name__ == "__main__":
                 df = pd.DataFrame.from_dict(attemps)
                 df.to_csv(join(test_results_path,'results.csv'))
                 means = df.groupby(['app','name']).mean()
-                means.to_csv(join(test_results_path,'mean_of_results.csv'))
+                means.to_csv(join(test_results_path,'mean.csv'))
                 print(df)
