@@ -1,4 +1,4 @@
-package org.apache.commons;
+package org.joda.time;
 
 import org.junit.*;
 import org.junit.runner.JUnitCore;
@@ -89,7 +89,7 @@ public class GetMetricsTest {
         Result result = junit.run(request);
     }
 
-    public static Thread startMetricThread() {
+    public static Thread startMetricThread(){
         Thread th = new Thread(new Runnable() {
             public void run() {
                 boolean run = true;
@@ -111,7 +111,7 @@ public class GetMetricsTest {
                 }
             }
 
-            private Long getMemoryUsage() {
+            private Long getMemoryUsage(){
                 MemoryUsage heapMemoryUsage = ManagementFactory.getMemoryMXBean().getHeapMemoryUsage();
                 return Long.valueOf(heapMemoryUsage.getUsed() / 1024);
             }
@@ -163,3 +163,4 @@ public class GetMetricsTest {
     }
 
 }
+

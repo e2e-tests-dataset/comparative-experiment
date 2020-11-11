@@ -10,6 +10,7 @@ import pickle
 import shutil
 from operator import attrgetter
 import json
+from shutil import copyfile
 
 class ProcessManager:
 
@@ -54,7 +55,7 @@ class ExtractorManager:
         self.mem=""
         self.n = 1
         self.fault_matrix = dict()
-        self.tcs = dict()
+        self.tcs = []
         self.pm = ProcessManager(open(join(self.folder_name, 'outputs.log'), 'w+'))
         self.project['n_bugs'] = int(self.pm.runAndGetOutput("defects4j info -p %s | grep 'Number of bugs:' | cut -d':' -f2" % project['name']))
     
@@ -88,7 +89,6 @@ class ExtractorManager:
                 root = xml.etree.ElementTree.parse(
                     join(self.project['reports_path'], report)).getroot()
                 suit_name = root.get('name')
-
                 # FILTER
                 excluded = False
                 if 'exclude' in self.project:
@@ -99,65 +99,72 @@ class ExtractorManager:
                 if excluded:
                     continue
 
-                try:
-                    # ADD BBOX
-                    with open(join(self.project['test_path'], suit_name.replace('.', '/')+".java"), "r+") as code_file:
-                        self.bbox += code_file.read().replace("\n", " ").replace("\r", " ") + '\n'
-                     # ADD TIME
-                    self.times += root.get('time')+'\n'
-                    # SAVE TO GET FAULT MATRIX
-                    self.tcs[suit_name] = {
-                        'id': self.n,
-                        'name': suit_name
-                    }
-                    self.n = self.n+1
-                except IOError as err:
+                className = join(self.project['test_path'], suit_name.replace('.', '/')+".java")
+                if os.path.isfile(className):
+
+                    for tc in root.findall("testcase"):
+                        self.tcs.append({
+                            'id': self.n,
+                            'class': tc.get("classname"),
+                            'testcase': tc.get("name")
+                        })
+                        self.n = self.n+1
+
+                else:
                     # Except when exist a class in another class, i.e. SpecializeModuleTest$SpecializeModuleSpecializationStateTest.java
                     print("> Can't include %s TC" % suit_name)
                     continue
 
     def getMetrics(self):
         print("> Running test for get metrics")
-        for tc in sorted(self.tcs.values(), key=lambda k: k['id']):
-            self.pm.call("pkill java")
-            self.pm.call(self.project['one_test'] % tc['name'])
+        for tc in sorted(self.tcs, key=lambda k: k['id']):
 
-            text = ""
+            clazz = tc['class']
+            clazz_name = tc['class'].split(".")[-1]
+            tc = tc['testcase']
+            fullName = clazz + "#" + tc
 
-            if self.project['metrics_path'].endswith(".xml"):
-                root = xml.etree.ElementTree.parse(self.project['metrics_path']).getroot()
-                text = root.find('system-out').text
-            else:
-                with open(self.project['metrics_path'], "r") as f:
-                    text = f.read()
+            self.pm.call("mvn clean")       
+            self.pm.call(self.project['one_test'] % fullName)
 
-            m = re.search("AVG Mem: (.+)\nAVG CPU: (.+)\nAVG time: (.+)", text)
-            cpu = -1
-            mem = -1
-            time = -1
-            if m is not None and m.group(1) and m.group(2) and m.group(3):
-                mem = m.group(1)
-                cpu = m.group(2)
-                time = str( float(m.group(3)) / 1000 )
-            self.cpu += cpu + '\n'
-            self.mem += mem + '\n'
-            self.times_avg += time + '\n'
-            print("      \033[90m> %s \033[0m" % tc['name'])
+            ouputFolder = join(self.folder_name, clazz_name, tc)
+
+            # COPY OUTPUT
+
+            if not os.path.isdir(join(self.folder_name, clazz_name)):
+                os.mkdir(join(self.folder_name, clazz_name))
+            os.mkdir(ouputFolder)
+            src = self.project['metrics_path']
+            dst = join(ouputFolder, "results.csv")
+            copyfile(src, dst)
+
+            # text = ""
+
+            # if self.project['metrics_path'].endswith(".xml"):
+            #     root = xml.etree.ElementTree.parse(self.project['metrics_path']).getroot()
+            #     text = root.find('system-out').text
+            # else:
+            #     with open(self.project['metrics_path'], "r") as f:
+            #         text = f.read()
+
+            # m = re.search("AVG Mem: (.+)\nAVG CPU: (.+)\nAVG time: (.+)", text)
+            # cpu = -1
+            # mem = -1
+            # time = -1
+            # if m is not None and m.group(1) and m.group(2) and m.group(3):
+            #     mem = m.group(1)
+            #     cpu = m.group(2)
+            #     time = str( float(m.group(3)) / 1000 )
+            # self.cpu += cpu + '\n'
+            # self.mem += mem + '\n'
+            # self.times_avg += time + '\n'
+            print("      \033[90m> %s \033[0m" % fullName)
     
     def fix(self, tc_class):
         if(self.project['name'] == "Math"):
             return tc_class.replace("math.","math3.")
         else:
             return tc_class
-
-    def save(self):
-        self.safeClose()
-        with open( join(self.folder_name,"times_avg.txt"), "w" ) as tma:
-            tma.write(self.times_avg)
-        with open( join(self.folder_name,"cpu.txt"), "w" ) as cpu:
-            cpu.write(self.cpu)
-        with open( join(self.folder_name,"mem.txt"), "w" ) as mem:
-            mem.write(self.mem)
 
 if __name__ == "__main__":
 
@@ -169,4 +176,3 @@ if __name__ == "__main__":
     em = ExtractorManager(config)
     em.runTestForMapClasses()
     em.getMetrics()
-    em.save()

@@ -1,2 +1,2 @@
-app,name,time,maxMem,maxCpu
-WebApp-3,checkShowAdminPage,206.7542,791.57109375,306.90671722
+time,maxMem,maxCpu
+206.7542,791.57109375,306.90671722

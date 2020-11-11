@@ -3,6 +3,7 @@ package org.apache.commons;
 import org.junit.*;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
+import org.junit.runner.Request;
 import repeat.Repeat;
 import repeat.RepeatRule;
 
@@ -15,10 +16,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class GetMetricsTest{
+public class GetMetricsTest {
 
     private static final int ITERATIONS = 10;
-    private static final int DISCARDED = 2;
     private static final int SLEEP_TIME = 10;
 
     @Rule
@@ -36,8 +36,13 @@ public class GetMetricsTest{
     private Thread th;
     private long time;
 
+    @BeforeClass
+    public static void beforeAllTest() {
+        System.out.println("app,name,time,maxMem,maxCpu");
+    }
+
     @Before
-    public void setUp(){
+    public void setUp() {
         testMemory = new ArrayList();
         testCpu = new ArrayList();
         th = startMetricThread();
@@ -45,32 +50,43 @@ public class GetMetricsTest{
     }
 
     @After
-    public void tearDown(){
-        Long time_ = new Long(System.currentTimeMillis()-this.time);
+    public void tearDown() {
+        Long time_ = Long.valueOf(System.currentTimeMillis() - this.time);
         allTestTimes.add(time_);
         th.interrupt();
-        allTestMemory.add(new Long(calculateAVGLong(testMemory)));
-        Double cpu = new Double(calculateAVGDouble(testCpu));
-        allTestCpu.add(Double.isNaN(cpu.doubleValue()) ? new Double(0.0): cpu);
+        Long mem = Long.valueOf(calculateAVGLong(testMemory));
+        allTestMemory.add(mem);
+        Double cpu = Double.valueOf(calculateAVGDouble(testCpu));
+        allTestCpu.add(Double.isNaN(cpu.doubleValue()) ? Double.valueOf(0.0) : cpu);
+        printMetrics(time_, mem, cpu);
+    }
+
+    private void printMetrics(Long time_, Long maxMem, Double maxCpu) {
+        // app,name,time,maxMem,maxCpu
+        String testName = System.getProperty("toTest").split("#")[1];
+        System.out.println(
+                "Lang" + "," + testName + "," + Double.valueOf(time_) / 1000 + "," + maxMem / 1024 + ", " + maxCpu);
     }
 
     @AfterClass
-    public static void finishAndSave(){
-        long mem = calculateAVGLong(allTestMemory.subList(DISCARDED, allTestMemory.size()));
-        double cpu = calculateAVGDouble(allTestCpu.subList(DISCARDED, allTestCpu.size()));
-        long time = calculateAVGLong(allTestTimes.subList(DISCARDED, allTestTimes.size()));
-        System.out.println("AVG Mem: "+mem);
-        System.out.println("AVG CPU: "+cpu);
-        System.out.println("AVG time: "+time);
+    public static void finishAndSave() {
+        long mem = calculateAVGLong(allTestMemory);
+        double cpu = calculateAVGDouble(allTestCpu);
+        long time = calculateAVGLong(allTestTimes);
     }
-
 
     @Test
     @Repeat(times = ITERATIONS)
-    public void test() throws ClassNotFoundException{
-        // mvn -Dtest=GetMetricsTest -DtoTest=org.apache.commons.lang3.AnnotationUtilsTest test
+    public void test() throws ClassNotFoundException {
+        // mvn -Dtest=GetMetricsTest
+        // -DtoTest=org.apache.commons.lang3.AnnotationUtilsTest#testIsValidAnnotationMemberType
+        // test
         JUnitCore junit = new JUnitCore();
-        Result result = junit.run(Class.forName(System.getProperty("toTest")));
+        String[] testPath = System.getProperty("toTest").split("#");
+
+        Class clazz = Class.forName(testPath[0]);
+        Request request = Request.method(clazz, testPath[1]);
+        Result result = junit.run(request);
     }
 
     public static Thread startMetricThread(){
@@ -96,19 +112,17 @@ public class GetMetricsTest{
             }
 
             private Long getMemoryUsage(){
-                //System.gc();
                 MemoryUsage heapMemoryUsage = ManagementFactory.getMemoryMXBean().getHeapMemoryUsage();
-                return new Long(heapMemoryUsage.getUsed()/ 1024);
+                return Long.valueOf(heapMemoryUsage.getUsed() / 1024);
             }
 
-            private Double getCPUUsage(){
+            private Double getCPUUsage() {
                 Object value = "0";
                 OperatingSystemMXBean operatingSystemMXBean = ManagementFactory.getOperatingSystemMXBean();
                 for (int i = 0; i < operatingSystemMXBean.getClass().getDeclaredMethods().length; i++) {
                     Method method = operatingSystemMXBean.getClass().getDeclaredMethods()[i];
                     method.setAccessible(true);
-                    if (method.getName().startsWith("getProcessCpuLoad")
-                            && Modifier.isPublic(method.getModifiers())) {
+                    if (method.getName().startsWith("getProcessCpuLoad") && Modifier.isPublic(method.getModifiers())) {
                         try {
                             value = method.invoke(operatingSystemMXBean, null);
                         } catch (Exception e) {
@@ -123,25 +137,29 @@ public class GetMetricsTest{
         return th;
     }
 
-    public static long calculateAVGLong(List list){
-        if(list.size() == 0) return 0;
+    public static long calculateAVGLong(List list) {
+        if (list.size() == 0)
+            return 0;
         long avg = 0;
-        for (int i = 0; i < list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
             Long v = (Long) list.get(i);
-            if(v != null) avg += v.longValue();
+            if (v != null)
+                avg += v.longValue();
         }
-        return avg/list.size();
+        return avg / list.size();
     }
 
-    public static double calculateAVGDouble(List list){
-        if(list.size() == 0) return 0.0;
+    public static double calculateAVGDouble(List list) {
+        if (list.size() == 0)
+            return 0.0;
         double avg = 0;
-        for (int i = 0; i < list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
             Double v = (Double) list.get(i);
-            if(v != null) avg += v.doubleValue();
+            if (v != null)
+                avg += v.doubleValue();
         }
 
-        return avg/list.size();
+        return avg / list.size();
     }
 
 }

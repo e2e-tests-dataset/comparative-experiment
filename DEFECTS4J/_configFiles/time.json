@@ -4,9 +4,9 @@
     "base_folder": "/tmp/TimeBase",
     "build": "sh /home/ubuntu/defects4j/_configFiles/timeFiles/build.sh",
     "test"   : "mvn test",
-    "one_test": "mvn -Dtest=GetMetrics -DtestClass=%s test",
+    "one_test": "mvn -Dtest=GetMetricsTest -DtoTest=%s test",
     "reports_path": "target/surefire-reports",
-    "metrics_path": "target/surefire-reports/org.joda.time.GetMetrics-output.txt",
+    "metrics_path": "target/surefire-reports/org.joda.time.GetMetricsTest-output.txt",
     "test_path": "src/test/java",
     "exclude": [
         "TestAll.*",

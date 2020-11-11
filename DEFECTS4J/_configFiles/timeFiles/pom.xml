@@ -214,7 +214,7 @@
     <!-- Other properties -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <testClass></testClass>
+    <toTest></toTest>
   </properties>
 
   <!-- ==================================================================== -->
@@ -302,7 +302,7 @@
         <configuration>
             <redirectTestOutputToFile>true</redirectTestOutputToFile>
             <systemPropertyVariables>
-              <testClass>${testClass}</testClass>
+              <toTest>${toTest}</toTest>
             </systemPropertyVariables>
           <includes>
             <include>**/Test*.java</include>
@@ -590,7 +590,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.2</version>
+      <version>4.11</version>
       <scope>test</scope>
     </dependency>
     <dependency>
