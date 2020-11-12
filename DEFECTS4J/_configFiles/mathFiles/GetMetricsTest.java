@@ -65,7 +65,7 @@ public class GetMetricsTest {
         // app,name,time,maxMem,maxCpu
         String testName = System.getProperty("toTest").split("#")[1];
         System.out.println(
-                "Lang" + "," + testName + "," + Double.valueOf(time_) / 1000 + "," + maxMem / 1024 + ", " + maxCpu);
+                "Math" + "," + testName + "," + Double.valueOf(time_) / 1000 + "," + maxMem / 1024 + ", " + maxCpu);
     }
 
     @AfterClass
