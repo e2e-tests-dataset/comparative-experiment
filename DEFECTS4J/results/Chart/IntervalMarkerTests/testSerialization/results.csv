@@ -1,0 +1,11 @@
+app,name,time,avgCpu,maxMem
+Chart,testSerialization,5.35,400,445384
+Chart,testSerialization,5.49,403,465440
+Chart,testSerialization,5.12,406,456616
+Chart,testSerialization,5.08,387,421660
+Chart,testSerialization,5.15,394,450660
+Chart,testSerialization,5.28,403,429996
+Chart,testSerialization,4.73,391,425060
+Chart,testSerialization,5.63,402,448004
+Chart,testSerialization,4.71,392,433648
+Chart,testSerialization,5.04,408,428804

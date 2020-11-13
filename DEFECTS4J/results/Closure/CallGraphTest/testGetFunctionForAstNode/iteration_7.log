@@ -1,0 +1,122 @@
+Buildfile: /tmp/ClosureBase/build.xml
+
+rhino:
+
+properties:
+
+init:
+    [mkdir] Created dir: /tmp/ClosureBase/build/lib
+    [mkdir] Created dir: /tmp/ClosureBase/build/lib/classes
+    [mkdir] Created dir: /tmp/ClosureBase/build/lib/rhino1_7R5pre
+
+compile:
+
+compile-most:
+    [javac] Compiling 217 source files to /tmp/ClosureBase/build/lib/classes
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.5
+    [javac] warning: [options] source value 1.5 is obsolete and will be removed in a future release
+    [javac] warning: [options] target value 1.5 is obsolete and will be removed in a future release
+    [javac] warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+    [javac] Note: /tmp/ClosureBase/lib/rhino/src/org/mozilla/javascript/commonjs/module/provider/SoftCachingModuleScriptProvider.java uses unchecked or unsafe operations.
+    [javac] Note: Recompile with -Xlint:unchecked for details.
+    [javac] 4 warnings
+     [copy] Copying 2 files to /tmp/ClosureBase/build/lib/classes
+
+compile-jdk15:
+    [javac] Compiling 1 source file to /tmp/ClosureBase/build/lib/classes
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.5
+    [javac] warning: [options] source value 1.5 is obsolete and will be removed in a future release
+    [javac] warning: [options] target value 1.5 is obsolete and will be removed in a future release
+    [javac] warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+    [javac] 4 warnings
+
+compile:
+
+properties:
+
+compile:
+    [javac] Compiling 29 source files to /tmp/ClosureBase/build/lib/classes
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.5
+    [javac] warning: [options] source value 1.5 is obsolete and will be removed in a future release
+    [javac] warning: [options] target value 1.5 is obsolete and will be removed in a future release
+    [javac] warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+    [javac] Note: /tmp/ClosureBase/lib/rhino/toolsrc/org/mozilla/javascript/tools/debugger/SwingGui.java uses unchecked or unsafe operations.
+    [javac] Note: Recompile with -Xlint:unchecked for details.
+    [javac] 4 warnings
+     [copy] Copying 1 file to /tmp/ClosureBase/build/lib/classes
+
+xmlimplsrc-compile:
+     [echo] Calling /tmp/ClosureBase/lib/rhino/xmlimplsrc/build.xml
+
+compile:
+
+compile-all:
+
+compile:
+    [javac] Compiling 3 source files to /tmp/ClosureBase/build/lib/classes
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.5
+    [javac] warning: [options] source value 1.5 is obsolete and will be removed in a future release
+    [javac] warning: [options] target value 1.5 is obsolete and will be removed in a future release
+    [javac] warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+    [javac] 4 warnings
+
+jar:
+     [copy] Copying 1 file to /tmp/ClosureBase/build/lib/classes
+      [jar] Building jar: /tmp/ClosureBase/build/lib/rhino1_7R5pre/js.jar
+
+rhino-jarjar:
+   [jarjar] Building jar: /tmp/ClosureBase/build/lib/rhino.jar
+
+svnversion:
+
+compile:
+    [mkdir] Created dir: /tmp/ClosureBase/build/classes
+    [javac] /tmp/ClosureBase/build.xml:256: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 7 source files to /tmp/ClosureBase/build/classes
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
+    [javac] 1 warning
+    [javac] /tmp/ClosureBase/build.xml:262: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 389 source files to /tmp/ClosureBase/build/classes
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
+    [javac] 1 warning
+    [mkdir] Created dir: /tmp/ClosureBase/build/classes/rhino_ast/java/com/google/javascript/rhino
+     [copy] Copying 1 file to /tmp/ClosureBase/build/classes/rhino_ast/java/com/google/javascript/rhino
+     [copy] Copying 1 file to /tmp/ClosureBase/build/classes/com/google/javascript/jscomp/parsing
+[propertyfile] Updating property file: /tmp/ClosureBase/build/classes/com/google/javascript/jscomp/parsing/ParserConfig.properties
+    [mkdir] Created dir: /tmp/ClosureBase/build/classes/com/google/javascript/jscomp/js
+     [copy] Copying 2 files to /tmp/ClosureBase/build/classes/com/google/javascript/jscomp/js
+
+compile-tests:
+    [mkdir] Created dir: /tmp/ClosureBase/build/test
+    [javac] /tmp/ClosureBase/build.xml:330: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 412 source files to /tmp/ClosureBase/build/test
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
+    [javac] 1 warning
+    [javac] /tmp/ClosureBase/build.xml:336: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 226 source files to /tmp/ClosureBase/build/test
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
+    [javac] /tmp/ClosureBase/test/com/google/javascript/jscomp/DataFlowAnalysisTest.java:663: warning: '_' used as an identifier
+    [javac]         for (DiGraphEdge<Instruction, Branch> _ : outEdges) {
+    [javac]                                               ^
+    [javac]   (use of '_' as an identifier might not be supported in releases after Java SE 8)
+    [javac] 2 warnings
+
+checkTestClass:
+
+checkTestMethod:
+
+test:
+    [mkdir] Created dir: /tmp/ClosureBase/build/testoutput
+    [junit] WARNING: multiple versions of ant detected in path for junit
+    [junit]          jar:file:/tmp/ClosureBase/lib/ant.jar!/org/apache/tools/ant/Project.class
+    [junit]      and jar:file:/usr/share/ant/lib/ant.jar!/org/apache/tools/ant/Project.class
+    [junit] Running com.google.javascript.jscomp.CallGraphTest
+    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.263 sec
+[junitreport] Processing /tmp/ClosureBase/TESTS-TestSuites.xml to /tmp/null1474329253
+[junitreport] Loading stylesheet jar:file:/usr/share/ant/lib/ant-junit.jar!/org/apache/tools/ant/taskdefs/optional/junit/xsl/junit-frames.xsl
+[junitreport] Transform time: 345ms
+[junitreport] Deleting: /tmp/null1474329253
+
+BUILD SUCCESSFUL
+Total time: 11 seconds
+time=12.13,cpu=413%,mem=947052

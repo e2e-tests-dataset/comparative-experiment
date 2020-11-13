@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 import re
+import statistics 
 from os import listdir
 from os.path import isfile, isdir, join
 
@@ -14,25 +15,28 @@ def extractTestCaseData(data):
 
     row = {
         'app': data['tJobExec']['tJob']['sut']['name'],
-        'name': ts['testCases'][0]['name'],  # ts['name'],
+        'name': ts['testCases'][0]['name'],
         'time': data['tJobExec']['duration'],
-        'testCases': [],
+        'avgMem': 0,
+        'avgCpu': 0,
         'maxMem': 0,
-        'maxCpu': 0
+        'testCases': [],
     }
 
     for tc in ts['testCases']:
-        #print("    - "+tc['name'])
 
         tc_dict = {
             "name": tc['name'],
             "time": tc['time'],
             "maxMem": [],
-            "maxCpu": []
+            "avgCpu": [],
+            "avgMem": []
         }
 
         memMetrics = []
         cpuMetrics = []
+
+        components = {}
 
         if 'metrics' in tc:
 
@@ -43,10 +47,15 @@ def extractTestCaseData(data):
                 if "_dockbeat-memory.maxUsage" in item['name']:
                     match = re.search("(.*)-et_dockbeat-memory.maxUsage", item['name'])
                     component = match.group(1)
+
+                    if component not in components:
+                        components[component] = { 'mem': [], 'cpu': [] }
+
                     #print("       Component: %s" % component)
                     for metric in item['traces'][cleanKey(item['name'])]:
                         memInMb = (metric['value'] / 1024) / 1024
                         #print("       -> Memory (MBytes): %d" % memInMb)
+                        components[component]['']
                         memMetrics.append((metric['value'] / 1024) / 1024)
 
                 # CPU USAGE
@@ -61,11 +70,13 @@ def extractTestCaseData(data):
                         cpuMetrics.append(cpuUsage)
 
         tc_dict['maxMem'] = max(memMetrics, default=0)
-        tc_dict['maxCpu'] = max(cpuMetrics, default=0)
+        tc_dict['avgMem'] = statistics.mean(memMetrics)
+        tc_dict['avgCpu'] = statistics.mean(cpuMetrics)
         row['testCases'].append(tc_dict)
 
     row['maxMem'] = max(map(lambda x: x["maxMem"], row['testCases']))
-    row['maxCpu'] = max(map(lambda x: x["maxCpu"], row['testCases']))
+    row['avgMem'] = max(map(lambda x: x["avgMem"], row['testCases']))
+    row['avgCpu'] = max(map(lambda x: x["avgCpu"], row['testCases']))
     del row['testCases']
 
     return row
@@ -101,7 +112,7 @@ if __name__ == "__main__":
 
             if len(attemps) > 0:
                 df = pd.DataFrame.from_dict(attemps)
-                df.to_csv(join(test_results_path,'results.csv'), index=False)
-                means = df.groupby(['app','name']).mean()
-                means.to_csv(join(test_results_path, 'mean.csv'), index=False)
+                #df.to_csv(join(test_results_path,'results.csv'), index=False)
                 print(df)
+            break
+        break

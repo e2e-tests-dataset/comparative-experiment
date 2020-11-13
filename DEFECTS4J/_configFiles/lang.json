@@ -3,14 +3,8 @@
     "base": "defects4j checkout -p Lang -v 1f -w /tmp/LangBase",
     "base_folder": "/tmp/LangBase",
     "build": "sh /home/ubuntu/defects4j/_configFiles/langFiles/build.sh",
-    "test"   : "mvn test",
-    "one_test": "mvn -Dtest=GetMetricsTest -DtoTest=%s test",
-    "reports_path": "target/surefire-reports",
-    "metrics_path": "target/surefire-reports/org.apache.commons.GetMetricsTest-output.txt",
-    "test_path": "src/test/java",
-    "exclude": [
-        "GetMetricsTest"
-    ],
+    "clean": "mvn clean",
+    "one_test": "mvn -B -Dtest=org.apache.commons.lang3.LocaleUtilsTest#testLang328 test",
     "sample_class": "org.apache.commons.lang3.LocaleUtilsTest",
     "sample_test_case": "testLang328"
 }

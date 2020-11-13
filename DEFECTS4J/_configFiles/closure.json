@@ -1,0 +1,10 @@
+{
+    "name" : "Closure",
+    "base": "defects4j checkout -p Closure -v 1f -w /tmp/ClosureBase",
+    "base_folder": "/tmp/ClosureBase",
+    "build": "sh /home/ubuntu/defects4j/_configFiles/closureFiles/build.sh",
+    "clean": "ant clean",
+    "one_test": "ant -DtestClass=com.google.javascript.jscomp.CallGraphTest -DtestMethod=testGetFunctionForAstNode test",
+    "sample_class": "com.google.javascript.jscomp.CallGraphTest",
+    "sample_test_case": "testGetFunctionForAstNode"
+}

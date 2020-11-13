@@ -1,0 +1,10 @@
+{
+    "name" : "Chart",
+    "base": "defects4j checkout -p Chart -v 1f -w /tmp/ChartBase",
+    "base_folder": "/tmp/ChartBase",
+    "build": "sh /home/ubuntu/defects4j/_configFiles/chartFiles/build.sh",
+    "clean": "ant clean",
+    "one_test": "ant -f ant/build.xml -DtestClass=org.jfree.chart.plot.junit.IntervalMarkerTests -DtestMethod=testSerialization test-only",
+    "sample_class": "org.jfree.chart.plot.junit.IntervalMarkerTests",
+    "sample_test_case": "testSerialization"
+}

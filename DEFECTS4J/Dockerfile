@@ -2,6 +2,7 @@ FROM defects4j:2.0.0
 # Build from https://github.com/rjust/defects4j/blob/master/Dockerfile
 
 RUN apt-get -y update && \
+    apt install time && \
     apt-get install -y python3-pip && \
     apt install -y build-essential libssl-dev libffi-dev python3-dev && apt install -y maven && apt-get install -y ant && \
     pip3 install pandas

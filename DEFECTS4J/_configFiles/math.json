@@ -3,25 +3,8 @@
     "base": "defects4j checkout -p Math -v 1f -w /tmp/MathBase",
     "base_folder": "/tmp/MathBase",
     "build": "sh /home/ubuntu/defects4j/_configFiles/mathFiles/build.sh",
-    "test"   : "mvn test",
-    "one_test": "mvn -Dtest=GetMetricsTest -DtoTest=%s test",
-    "reports_path": "target/surefire-reports",
-    "metrics_path": "target/surefire-reports/org.apache.commons.GetMetricsTest-output.txt",
-    "test_path": "src/test/java",
-    "exclude": [
-        ".*DiscreteRealDistributionTest.*",
-        ".*MultiStartUnivariateRealOptimizerTest.*",
-        ".*EigenDecompositionImplTest.*",
-        ".*MultiDirectionalTest.*",
-        ".*MultiDirectionalTest.*",
-        ".*CholeskyDecompositionImplTest.*",
-        ".*BigMatrixImplTest.*",
-        ".*RealMatrixImplTest.*",
-        ".*GaussNewtonEstimatorTest.*",
-        ".*ChiSquareFactoryTest.*",
-        ".*ChiSquareFactoryTest.*",
-        "GetMetricsTest"
-    ],
+    "clean": "mvn clean",
+    "one_test": "mvn -B -Dtest=org.apache.commons.math3.geometry.euclidean.oned.IntervalsSetTest#testInterval test",
     "sample_class": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSetTest",
     "sample_test_case": "testInterval"
 }

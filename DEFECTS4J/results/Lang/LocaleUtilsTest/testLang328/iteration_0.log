@@ -1,0 +1,65 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.apache.commons:commons-lang3 >------------------
+[INFO] Building Commons Lang 3.2-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-antrun-plugin:1.7:run (javadoc.resources) @ commons-lang3 ---
+[INFO] Executing tasks
+
+main:
+     [copy] Copying 2 files to /tmp/LangBase/target/apidocs/META-INF
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-remote-resources-plugin:1.4:process (default) @ commons-lang3 ---
+[INFO] 
+[INFO] --- buildnumber-maven-plugin:1.2:create (default) @ commons-lang3 ---
+[INFO] Checking for local modifications: skipped.
+[INFO] Updating project files from SCM: skipped.
+[INFO] Executing: /bin/sh -c cd /tmp/LangBase && svn --non-interactive info
+[INFO] Working directory: /tmp/LangBase
+[INFO] Storing buildNumber: ?????? at timestamp: 1605296702277
+[INFO] Executing: /bin/sh -c cd /tmp/LangBase && svn --non-interactive info
+[INFO] Working directory: /tmp/LangBase
+[INFO] Storing buildScmBranch: UNKNOWN_BRANCH
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ commons-lang3 ---
+[INFO] Using 'ISO-8859-1' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /tmp/LangBase/src/main/resources
+[INFO] Copying 2 resources to META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:compile (default-compile) @ commons-lang3 ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 110 source files to /tmp/LangBase/target/classes
+[INFO] 
+[INFO] --- maven-bundle-plugin:2.3.7:manifest (bundle-manifest) @ commons-lang3 ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ commons-lang3 ---
+[INFO] Using 'ISO-8859-1' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] Copying 2 resources to META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:testCompile (default-testCompile) @ commons-lang3 ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 130 source files to /tmp/LangBase/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.13:test (default-test) @ commons-lang3 ---
+[INFO] Surefire report directory: /tmp/LangBase/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.apache.commons.lang3.LocaleUtilsTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.067 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.465 s
+[INFO] Finished at: 2020-11-13T11:45:07-08:00
+[INFO] ------------------------------------------------------------------------
+time=7.82,cpu=411%,mem=471408

@@ -1,0 +1,49 @@
+Buildfile: /tmp/ChartBase/ant/build.xml
+
+initialise:
+
+compile:
+    [mkdir] Created dir: /tmp/ChartBase/build
+    [javac] /tmp/ChartBase/ant/build.xml:52: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 654 source files to /tmp/ChartBase/build
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.4
+    [javac] warning: [options] source value 1.4 is obsolete and will be removed in a future release
+    [javac] warning: [options] target value 1.4 is obsolete and will be removed in a future release
+    [javac] warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+    [javac] Note: /tmp/ChartBase/source/org/jfree/chart/plot/XYPlot.java uses or overrides a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+    [javac] 4 warnings
+     [copy] Copying 1 file to /tmp/ChartBase/build/org/jfree/chart
+     [copy] Copying 12 files to /tmp/ChartBase/build/org/jfree/chart
+     [copy] Copying 9 files to /tmp/ChartBase/build/org/jfree/chart/plot
+     [copy] Copying 10 files to /tmp/ChartBase/build/org/jfree/chart/editor
+     [copy] Copying 5 files to /tmp/ChartBase/build/org/jfree/chart/ui
+      [jar] Building jar: /tmp/ChartBase/jfreechart-1.2.0-ea1.jar
+   [delete] Deleting directory /tmp/ChartBase/build
+
+compile-experimental:
+    [mkdir] Created dir: /tmp/ChartBase/build
+    [javac] /tmp/ChartBase/ant/build.xml:111: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 1 source file to /tmp/ChartBase/build
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.4
+    [javac] warning: [options] source value 1.4 is obsolete and will be removed in a future release
+    [javac] warning: [options] target value 1.4 is obsolete and will be removed in a future release
+    [javac] warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+    [javac] 4 warnings
+      [jar] Building jar: /tmp/ChartBase/jfreechart-1.2.0-ea1-experimental.jar
+   [delete] Deleting directory /tmp/ChartBase/build
+
+compile-tests:
+    [javac] /tmp/ChartBase/ant/build.xml:302: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+
+checkTestClass:
+
+checkTestMethod:
+
+test-only:
+    [junit] Running org.jfree.chart.plot.junit.IntervalMarkerTests
+    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 sec
+
+BUILD SUCCESSFUL
+Total time: 4 seconds
+time=4.71,cpu=392%,mem=433648

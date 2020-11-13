@@ -1,0 +1,11 @@
+app,name,time,avgCpu,maxMem
+Closure,testGetFunctionForAstNode,10.81,411,962820
+Closure,testGetFunctionForAstNode,11.96,413,953348
+Closure,testGetFunctionForAstNode,12.82,408,906440
+Closure,testGetFunctionForAstNode,11.74,408,912732
+Closure,testGetFunctionForAstNode,11.89,402,922820
+Closure,testGetFunctionForAstNode,11.56,415,964332
+Closure,testGetFunctionForAstNode,11.99,413,964168
+Closure,testGetFunctionForAstNode,12.13,413,947052
+Closure,testGetFunctionForAstNode,11.90,410,969736
+Closure,testGetFunctionForAstNode,11.65,415,946568

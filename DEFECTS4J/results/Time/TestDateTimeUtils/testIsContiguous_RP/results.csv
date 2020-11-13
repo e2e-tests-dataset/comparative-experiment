@@ -1,11 +1,11 @@
-app,name,time,avgMem,avgCpu,maxMem
-Time,testIsContiguous_RP,0.073, 9.7197265625, 27.721139525680588,11.33984375
-Time,testIsContiguous_RP,0.004, 11.33984375, 33.33333333333333,11.33984375
-Time,testIsContiguous_RP,0.003, 12.599609375, 33.33333333333333,12.599609375
-Time,testIsContiguous_RP,0.002, 13.8603515625, 33.33333333333333,13.8603515625
-Time,testIsContiguous_RP,0.002, 15.1201171875, 100.0,15.1201171875
-Time,testIsContiguous_RP,0.003, 16.3798828125, 0.0,16.3798828125
-Time,testIsContiguous_RP,0.002, 18.900390625, 50.0,18.900390625
-Time,testIsContiguous_RP,0.002, 20.16015625, 0.0,20.16015625
-Time,testIsContiguous_RP,0.002, 21.419921875, 50.0,21.419921875
-Time,testIsContiguous_RP,0.002, 22.6806640625, 50.0,22.6806640625
+app,name,time,avgCpu,maxMem
+Time,testIsContiguous_RP,9.86,407,204616
+Time,testIsContiguous_RP,10.82,417,239952
+Time,testIsContiguous_RP,10.41,422,242296
+Time,testIsContiguous_RP,10.18,420,230228
+Time,testIsContiguous_RP,9.84,406,238964
+Time,testIsContiguous_RP,10.68,413,212980
+Time,testIsContiguous_RP,10.26,423,239272
+Time,testIsContiguous_RP,10.14,424,242992
+Time,testIsContiguous_RP,10.49,421,229920
+Time,testIsContiguous_RP,10.25,422,239180

@@ -56,7 +56,6 @@ coverage.xml
 *.pot
 
 # Django stuff:
-*.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
@@ -132,3 +131,6 @@ dmypy.json
 .project
 .settings/
 .classpath
+
+#*.log
+!iteration⁻_*.log

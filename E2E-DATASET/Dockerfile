@@ -12,4 +12,4 @@ WORKDIR /home/ubuntu/E2EDataset/
 CMD [ "bash"]
 
 # BUILD docker build -t e2e-dataset:quatic-2020 .
-# RUN docker run -it --rm -v $PWD/E2E-DATASET:/home/ubuntu/E2EDataset/ e2e-dataset:quatic-2020 bash 
+# RUN docker run -it --rm -v $PWD:/home/ubuntu/E2EDataset/ e2e-dataset:quatic-2020 bash 

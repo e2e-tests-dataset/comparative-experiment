@@ -3,15 +3,8 @@
     "base": "defects4j checkout -p Time -v 1f -w /tmp/TimeBase",
     "base_folder": "/tmp/TimeBase",
     "build": "sh /home/ubuntu/defects4j/_configFiles/timeFiles/build.sh",
-    "test"   : "mvn test",
-    "one_test": "mvn -Dtest=GetMetricsTest -DtoTest=%s test",
-    "reports_path": "target/surefire-reports",
-    "metrics_path": "target/surefire-reports/org.joda.time.GetMetricsTest-output.txt",
-    "test_path": "src/test/java",
-    "exclude": [
-        "TestAll.*",
-        ".*GetMetrics.*"
-    ],
+    "clean": "mvn clean",
+    "one_test": "mvn -B -Dtest=org.joda.time.TestDateTimeUtils#testIsContiguous_RP test",
     "sample_class": "org.joda.time.TestDateTimeUtils",
     "sample_test_case": "testIsContiguous_RP"
 }
