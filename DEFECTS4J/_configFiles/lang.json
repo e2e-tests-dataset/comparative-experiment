@@ -10,5 +10,7 @@
     "test_path": "src/test/java",
     "exclude": [
         "GetMetricsTest"
-    ]
+    ],
+    "sample_class": "org.apache.commons.lang3.LocaleUtilsTest",
+    "sample_test_case": "testLang328"
 }

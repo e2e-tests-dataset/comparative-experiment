@@ -21,5 +21,7 @@
         ".*ChiSquareFactoryTest.*",
         ".*ChiSquareFactoryTest.*",
         "GetMetricsTest"
-    ]
+    ],
+    "sample_class": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSetTest",
+    "sample_test_case": "testInterval"
 }

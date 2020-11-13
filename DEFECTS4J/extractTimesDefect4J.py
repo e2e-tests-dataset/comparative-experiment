@@ -59,7 +59,10 @@ class ExtractorManager:
         self.pm = ProcessManager(open(join(self.folder_name, 'outputs.log'), 'w+'))
         self.project['n_bugs'] = int(self.pm.runAndGetOutput("defects4j info -p %s | grep 'Number of bugs:' | cut -d':' -f2" % project['name']))
     
-    def create_and_test(self, folder, change_version_command):
+    def generateProject(self):
+        folder = self.project['base_folder']
+        change_version_command = self.project['base']
+        print("\033[95mProject: %s \033[0m" % self.project['name'])
         print("> Getting version %s" % folder)
         if os.path.exists( folder ):
             print("> Project available: %s" % folder)
@@ -68,8 +71,6 @@ class ExtractorManager:
             self.pm.call(change_version_command)
             os.chdir(folder)
             self.pm.call(self.project['build'])
-            print("> Running test: %s" % folder)
-            self.pm.call(self.project['test'])
     
     def safeClose(self):
         self.pm.close()
@@ -78,10 +79,8 @@ class ExtractorManager:
 
     def runTestForMapClasses(self):
 
-        print("\033[95mProject: %s \033[0m" % self.project['name'])
-
-        self.create_and_test(self.project['base_folder'], self.project['base'])
-
+        print("> Running test for map: %s" % self.project['base_folder'])
+        self.pm.call(self.project['test'])
         reports = listdir(self.project['reports_path'])
         reports.sort()
         for report in reports:
@@ -115,50 +114,28 @@ class ExtractorManager:
                     print("> Can't include %s TC" % suit_name)
                     continue
 
-    def getMetrics(self):
-        print("> Running test for get metrics")
+    def runTestForGetMetrics(self):
+        print("> Running all test for get metrics")
         for tc in sorted(self.tcs, key=lambda k: k['id']):
+            self.runOneTestAndGetMetrics(tc['class'], tc['testcase'])
 
-            clazz = tc['class']
-            clazz_name = tc['class'].split(".")[-1]
-            tc = tc['testcase']
-            fullName = clazz + "#" + tc
+    def runOneTestAndGetMetrics(self, clazz, testCase):
+        fullName = clazz + "#" + testCase
+        clazz_name = clazz.split(".")[-1]
+        self.pm.call("mvn clean")       
+        self.pm.call(self.project['one_test'] % fullName)
 
-            self.pm.call("mvn clean")       
-            self.pm.call(self.project['one_test'] % fullName)
+        ouputFolder = join(self.folder_name, clazz_name, testCase)
 
-            ouputFolder = join(self.folder_name, clazz_name, tc)
+        # COPY OUTPUT
 
-            # COPY OUTPUT
-
-            if not os.path.isdir(join(self.folder_name, clazz_name)):
-                os.mkdir(join(self.folder_name, clazz_name))
-            os.mkdir(ouputFolder)
-            src = self.project['metrics_path']
-            dst = join(ouputFolder, "results.csv")
-            copyfile(src, dst)
-
-            # text = ""
-
-            # if self.project['metrics_path'].endswith(".xml"):
-            #     root = xml.etree.ElementTree.parse(self.project['metrics_path']).getroot()
-            #     text = root.find('system-out').text
-            # else:
-            #     with open(self.project['metrics_path'], "r") as f:
-            #         text = f.read()
-
-            # m = re.search("AVG Mem: (.+)\nAVG CPU: (.+)\nAVG time: (.+)", text)
-            # cpu = -1
-            # mem = -1
-            # time = -1
-            # if m is not None and m.group(1) and m.group(2) and m.group(3):
-            #     mem = m.group(1)
-            #     cpu = m.group(2)
-            #     time = str( float(m.group(3)) / 1000 )
-            # self.cpu += cpu + '\n'
-            # self.mem += mem + '\n'
-            # self.times_avg += time + '\n'
-            print("      \033[90m> %s \033[0m" % fullName)
+        if not os.path.isdir(join(self.folder_name, clazz_name)):
+            os.mkdir(join(self.folder_name, clazz_name))
+        os.mkdir(ouputFolder)
+        src = self.project['metrics_path']
+        dst = join(ouputFolder, "results.csv")
+        copyfile(src, dst)
+        print("      \033[90m> %s \033[0m" % fullName)
     
     def fix(self, tc_class):
         if(self.project['name'] == "Math"):
@@ -174,5 +151,7 @@ if __name__ == "__main__":
     config = json.load(open(sys.argv[1]))
 
     em = ExtractorManager(config)
-    em.runTestForMapClasses()
-    em.getMetrics()
+    em.generateProject()
+    # em.runTestForMapClasses()
+    # em.runTestForGetMetrics()
+    em.runOneTestAndGetMetrics(config["sample_class"],config["sample_test_case"])

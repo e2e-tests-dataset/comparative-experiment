@@ -11,5 +11,7 @@
     "exclude": [
         "TestAll.*",
         ".*GetMetrics.*"
-    ]
+    ],
+    "sample_class": "org.joda.time.TestDateTimeUtils",
+    "sample_test_case": "testIsContiguous_RP"
 }
