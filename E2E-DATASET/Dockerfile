@@ -9,7 +9,7 @@ RUN echo "PS1='\[\033[1;36m\]E2E-DATASET \[\033[1;34m\]\w\[\033[0;35m\] \[\033[1
 
 WORKDIR /home/ubuntu/E2EDataset/
 
-CMD [ "bash"]
+CMD ["bash"]
 
 # BUILD docker build -t e2e-dataset:quatic-2020 .
 # RUN docker run -it --rm -v $PWD:/home/ubuntu/E2EDataset/ e2e-dataset:quatic-2020 bash 

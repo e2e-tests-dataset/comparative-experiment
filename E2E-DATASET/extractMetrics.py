@@ -17,7 +17,6 @@ def extractTestCaseData(data):
         'app': data['tJobExec']['tJob']['sut']['name'],
         'name': ts['testCases'][0]['name'],
         'time': data['tJobExec']['duration'],
-        'avgMem': 0,
         'avgCpu': 0,
         'maxMem': 0,
         'testCases': [],
@@ -28,54 +27,77 @@ def extractTestCaseData(data):
         tc_dict = {
             "name": tc['name'],
             "time": tc['time'],
-            "maxMem": [],
             "avgCpu": [],
-            "avgMem": []
+            "maxMem": []
         }
+
+        instants = {}
+
+        metrics = []
+        if 'metrics' in tc:
+            metrics = tc['metrics']
+        else:
+            metrics = data['metrics']
+
+        for item in metrics:
+
+            # MEMORY USAGE
+
+            if "_dockbeat-memory.maxUsage" in item['name']:
+                match = re.search("(.*)-et_dockbeat-memory.maxUsage", item['name'])
+                component_key = match.group(1)
+
+                for metric in item['traces'][cleanKey(item['name'])]:
+
+                    instant_key = metric["timestamp"][0:-5]
+                    
+                    if instant_key not in instants:
+                        instants[instant_key] = {}
+
+                    if component_key not in instants[instant_key]:
+                        instants[instant_key][component_key] = { 'mem': [], 'cpu': [] }
+
+                    memInMb = (metric['value'] / 1024) / 1024
+                    instants[instant_key][component_key]['mem'].append(memInMb)
+
+            # CPU USAGE
+
+            if "_dockbeat-cpu.totalUsage" in item['name']:
+                match = re.search("(.*)-et_dockbeat-cpu.totalUsage", item['name'])
+                component = match.group(1)
+
+                for metric in item['traces'][cleanKey(item['name'])]:
+
+                    instant_key = metric["timestamp"][0:-5]
+                    
+                    if instant_key not in instants:
+                        instants[instant_key] = {}
+
+                    if component_key not in instants[instant_key]:
+                        instants[instant_key][component_key] = { 'mem': [], 'cpu': [] }
+
+                    cpuUsage= metric['value']
+                    instants[instant_key][component_key]['cpu'].append(cpuUsage)
 
         memMetrics = []
         cpuMetrics = []
 
-        components = {}
+        for components in instants.values():
+            sumCpu = 0
+            sumMemory = 0
+            # ONLY WHEN ALL COMPONENTS
+            #if len(components.values()) < 4: continue
+            for component in components.values():
+                sumCpu += statistics.mean(component['cpu']) if len(component['cpu']) > 0 else 0.0
+                sumMemory += max(component['mem'], default=0)
+            memMetrics.append(sumMemory)
+            cpuMetrics.append(sumCpu)
 
-        if 'metrics' in tc:
-
-            for item in tc['metrics']:
-
-                # MEMORY USAGE
-
-                if "_dockbeat-memory.maxUsage" in item['name']:
-                    match = re.search("(.*)-et_dockbeat-memory.maxUsage", item['name'])
-                    component = match.group(1)
-
-                    if component not in components:
-                        components[component] = { 'mem': [], 'cpu': [] }
-
-                    #print("       Component: %s" % component)
-                    for metric in item['traces'][cleanKey(item['name'])]:
-                        memInMb = (metric['value'] / 1024) / 1024
-                        #print("       -> Memory (MBytes): %d" % memInMb)
-                        components[component]['']
-                        memMetrics.append((metric['value'] / 1024) / 1024)
-
-                # CPU USAGE
-
-                if "_dockbeat-cpu.totalUsage" in item['name']:
-                    match = re.search("(.*)-et_dockbeat-cpu.totalUsage", item['name'])
-                    component = match.group(1)
-                    #print("       Component: %s" % component)
-                    for metric in item['traces'][cleanKey(item['name'])]:
-                        cpuUsage= metric['value']
-                        #print("       -> CPU (%%): %f" % cpuUsage)
-                        cpuMetrics.append(cpuUsage)
-
-        tc_dict['maxMem'] = max(memMetrics, default=0)
-        tc_dict['avgMem'] = statistics.mean(memMetrics)
-        tc_dict['avgCpu'] = statistics.mean(cpuMetrics)
         row['testCases'].append(tc_dict)
+        tc_dict['maxMem'] = max(memMetrics, default=0)
+        tc_dict['avgCpu'] = statistics.mean(cpuMetrics) if len(cpuMetrics) > 0 else 0.0
 
     row['maxMem'] = max(map(lambda x: x["maxMem"], row['testCases']))
-    row['avgMem'] = max(map(lambda x: x["avgMem"], row['testCases']))
     row['avgCpu'] = max(map(lambda x: x["avgCpu"], row['testCases']))
     del row['testCases']
 
@@ -109,10 +131,11 @@ if __name__ == "__main__":
                 with open(join(test_results_path, result)) as json_file:
                     data = json.load(json_file)
                     attemps.append(extractTestCaseData(data))
+                #break # TO DELETE
 
             if len(attemps) > 0:
                 df = pd.DataFrame.from_dict(attemps)
-                #df.to_csv(join(test_results_path,'results.csv'), index=False)
+                df.to_csv(join(test_results_path,'results.csv'), index=False)
                 print(df)
-            break
-        break
+            #break # TO DELETE
+        #break # TO DELETE
