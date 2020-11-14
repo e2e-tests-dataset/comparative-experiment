@@ -38,7 +38,7 @@ Writing ZoneInfoMap
  T E S T S
 -------------------------------------------------------
 Running org.joda.time.TestDateTimeUtils
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.08 sec - in org.joda.time.TestDateTimeUtils
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.086 sec - in org.joda.time.TestDateTimeUtils
 
 Results :
 
@@ -47,7 +47,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  8.735 s
-[INFO] Finished at: 2020-11-13T11:52:25-08:00
+[INFO] Total time:  8.971 s
+[INFO] Finished at: 2020-11-13T17:59:26-08:00
 [INFO] ------------------------------------------------------------------------
-time=9.84,cpu=406%,mem=238964
+time=10.08,cpu=402%,mem=215512

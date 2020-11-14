@@ -34,16 +34,26 @@ compile-experimental:
    [delete] Deleting directory /tmp/ChartBase/build
 
 compile-tests:
+    [mkdir] Created dir: /tmp/ChartBase/build-tests
     [javac] /tmp/ChartBase/ant/build.xml:302: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 389 source files to /tmp/ChartBase/build-tests
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.4
+    [javac] warning: [options] source value 1.4 is obsolete and will be removed in a future release
+    [javac] warning: [options] target value 1.4 is obsolete and will be removed in a future release
+    [javac] warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+    [javac] Note: Some input files use or override a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+    [javac] 4 warnings
 
 checkTestClass:
 
 checkTestMethod:
 
 test-only:
+    [mkdir] Created dir: /tmp/ChartBase/metrics-results
     [junit] Running org.jfree.chart.plot.junit.IntervalMarkerTests
-    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.073 sec
+    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.078 sec
 
 BUILD SUCCESSFUL
-Total time: 5 seconds
-time=5.35,cpu=400%,mem=445384
+Total time: 6 seconds
+time=6.40,cpu=408%,mem=533160

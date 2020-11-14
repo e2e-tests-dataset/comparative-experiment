@@ -37,8 +37,7 @@ class ExtractorManager:
         self.init_folder = os.getcwd()
         
         if os.path.exists(self.folder_name):
-            print("Results for project %s already exist" %
-                  self.project['name'])
+            print("Results for project %s already exist" %self.project['name'])
             exit(0)
         os.mkdir(self.folder_name)
         
@@ -53,14 +52,13 @@ class ExtractorManager:
     
     def generateProject(self):
         folder = self.project['base_folder']
-        change_version_command = self.project['base']
         print("\033[95mProject: %s \033[0m" % self.project['name'])
         print("> Getting version %s" % folder)
         if os.path.exists( folder ):
             print("> Project available: %s" % folder)
             os.chdir(folder)
         else:
-            cmd(change_version_command)
+            cmd(self.project['base'])
             os.chdir(folder)   
             cmd(self.project['build'])   
 
@@ -93,7 +91,7 @@ class ExtractorManager:
                 "name": testCase,
                 "time": metrics['time'],
                 "avgCpu": metrics['cpu'][0:-1],
-                "maxMem": metrics['mem']
+                "maxMem": float(metrics['mem']) / 1024
             }, ignore_index=True)
 
         # GENERATE OUTPUT FILE

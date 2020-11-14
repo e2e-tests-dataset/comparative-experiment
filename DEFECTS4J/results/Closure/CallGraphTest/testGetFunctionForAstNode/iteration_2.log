@@ -111,12 +111,12 @@ test:
     [junit]          jar:file:/tmp/ClosureBase/lib/ant.jar!/org/apache/tools/ant/Project.class
     [junit]      and jar:file:/usr/share/ant/lib/ant.jar!/org/apache/tools/ant/Project.class
     [junit] Running com.google.javascript.jscomp.CallGraphTest
-    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.336 sec
-[junitreport] Processing /tmp/ClosureBase/TESTS-TestSuites.xml to /tmp/null1103509579
+    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.268 sec
+[junitreport] Processing /tmp/ClosureBase/TESTS-TestSuites.xml to /tmp/null1620712980
 [junitreport] Loading stylesheet jar:file:/usr/share/ant/lib/ant-junit.jar!/org/apache/tools/ant/taskdefs/optional/junit/xsl/junit-frames.xsl
-[junitreport] Transform time: 365ms
-[junitreport] Deleting: /tmp/null1103509579
+[junitreport] Transform time: 354ms
+[junitreport] Deleting: /tmp/null1620712980
 
 BUILD SUCCESSFUL
-Total time: 12 seconds
-time=12.82,cpu=408%,mem=906440
+Total time: 13 seconds
+time=14.12,cpu=399%,mem=977728

@@ -18,7 +18,7 @@ main:
 [INFO] Updating project files from SCM: skipped.
 [INFO] Executing: /bin/sh -c cd /tmp/MathBase && svn --non-interactive info
 [INFO] Working directory: /tmp/MathBase
-[INFO] Storing buildNumber: ?????? at timestamp: 1605296851643
+[INFO] Storing buildNumber: ?????? at timestamp: 1605319015944
 [INFO] Executing: /bin/sh -c cd /tmp/MathBase && svn --non-interactive info
 [INFO] Working directory: /tmp/MathBase
 [INFO] Storing buildScmBranch: UNKNOWN_BRANCH
@@ -57,7 +57,7 @@ main:
  T E S T S
 -------------------------------------------------------
 Running org.apache.commons.math3.geometry.euclidean.oned.IntervalsSetTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.089 sec - in org.apache.commons.math3.geometry.euclidean.oned.IntervalsSetTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.09 sec - in org.apache.commons.math3.geometry.euclidean.oned.IntervalsSetTest
 
 Results :
 
@@ -66,7 +66,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  10.759 s
-[INFO] Finished at: 2020-11-13T11:47:41-08:00
+[INFO] Total time:  10.613 s
+[INFO] Finished at: 2020-11-13T17:57:05-08:00
 [INFO] ------------------------------------------------------------------------
-time=11.95,cpu=408%,mem=664828
+time=11.86,cpu=399%,mem=632836

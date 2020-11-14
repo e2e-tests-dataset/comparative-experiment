@@ -42,8 +42,8 @@ checkTestMethod:
 
 test-only:
     [junit] Running org.jfree.chart.plot.junit.IntervalMarkerTests
-    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.075 sec
+    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.078 sec
 
 BUILD SUCCESSFUL
-Total time: 5 seconds
-time=5.49,cpu=403%,mem=465440
+Total time: 4 seconds
+time=5.15,cpu=403%,mem=438896

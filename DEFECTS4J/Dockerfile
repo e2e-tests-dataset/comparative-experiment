@@ -14,7 +14,9 @@ RUN echo "PS1='\[\033[1;36m\]D4J \[\033[1;34m\]\w\[\033[0;35m\] \[\033[1;36m\]# 
 
 WORKDIR /home/ubuntu/defects4j/
 
-CMD [ "bash"]
+ENTRYPOINT ["python3"]
+
+CMD ["bash"]
 
 # BUILD docker build -t defects4j:quatic-2020 .
 # RUN docker run -it --rm -v $PWD:/home/ubuntu/defects4j/ defects4j:quatic-2020 bash 

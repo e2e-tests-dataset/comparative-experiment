@@ -18,7 +18,7 @@ main:
 [INFO] Updating project files from SCM: skipped.
 [INFO] Executing: /bin/sh -c cd /tmp/LangBase && svn --non-interactive info
 [INFO] Working directory: /tmp/LangBase
-[INFO] Storing buildNumber: ?????? at timestamp: 1605296755722
+[INFO] Storing buildNumber: ?????? at timestamp: 1605318818813
 [INFO] Executing: /bin/sh -c cd /tmp/LangBase && svn --non-interactive info
 [INFO] Working directory: /tmp/LangBase
 [INFO] Storing buildScmBranch: UNKNOWN_BRANCH
@@ -50,7 +50,7 @@ main:
  T E S T S
 -------------------------------------------------------
 Running org.apache.commons.lang3.LocaleUtilsTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.066 sec
 
 Results :
 
@@ -59,7 +59,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  6.231 s
-[INFO] Finished at: 2020-11-13T11:46:00-08:00
+[INFO] Total time:  5.982 s
+[INFO] Finished at: 2020-11-13T17:53:43-08:00
 [INFO] ------------------------------------------------------------------------
-time=7.55,cpu=405%,mem=465196
+time=7.15,cpu=405%,mem=524600
