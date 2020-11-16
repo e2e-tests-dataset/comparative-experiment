@@ -350,7 +350,7 @@
 
   <property name="testClass" value="Not defined"/>
   <property name="testMethod" value="Not defined"/>
-  <property name="junit.dir" value="metrics-results"/>
+  <property name="junit.dir" value="build/surefire-reports/"/>
 
   <target name="checkTestClass" if="${testClass}!='Not defined">
         <echo message="No class defined with -DtestClass"/>
@@ -359,6 +359,30 @@
   <target name="checkTestMethod" if="${testMethod}!='Not defined">
     <echo message="No method defined with -DtestMethod"/>
   </target>
+
+    <target name="test-only"
+            depends="compile-tests, checkTestClass, checkTestMethod"
+            description="Run specific test">
+
+        <mkdir dir="${junit.dir}"/>
+
+        <junit printSummary="yes"
+               haltonerror="true"
+               haltonfailure="true"
+               fork="true"
+               dir="."
+               showoutput="yes">
+
+            <test name="${testClass}" methods="${testMethod}" todir="${junit.dir}"/>
+
+            <sysproperty key="basedir" value="."/>
+            <formatter type="xml"/>
+            <classpath refid="allclasspath.path" />
+            <classpath>
+                <pathelement location="${build.dir}/test" />
+            </classpath>
+        </junit>
+    </target>
 
   <target name="test"
           depends="compile-tests, checkTestClass, checkTestMethod"
