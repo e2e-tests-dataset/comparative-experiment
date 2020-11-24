@@ -8,15 +8,16 @@ from os.path import isfile, isdir, join
 def cleanKey(key):
     return key.replace('.', '_').replace("-", "_")
 
-def extractTestCaseData(data):
+def extractTestCaseData(data, app):
 
     # All executions have only 1 Test Suite with 1 Test Case
     ts = data['tJobExec']['testSuites'][0]
 
     row = {
-        'app': data['tJobExec']['tJob']['sut']['name'],
+        'app':  app,
         'name': ts['testCases'][0]['name'],
-        'time': data['tJobExec']['duration'],
+        'totalTime': data['tJobExec']['duration'],
+        'testTime' : ts["timeElapsed"],
         'avgCpu': 0,
         'maxMem': 0,
         'testCases': [],
@@ -130,7 +131,7 @@ if __name__ == "__main__":
                 
                 with open(join(test_results_path, result)) as json_file:
                     data = json.load(json_file)
-                    attemps.append(extractTestCaseData(data))
+                    attemps.append(extractTestCaseData(data, app))
                 #break # TO DELETE
 
             if len(attemps) > 0:
