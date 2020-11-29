@@ -1,0 +1,11 @@
+app,name,totalTime,testTime,avgCpu,maxMem
+Express,app .request should extend the request prototype,27.227,0.035999998450279236,104.18895895384615,186.78125
+Express,app .request should extend the request prototype,25.954,0.032999999821186066,107.69643703076923,183.78515625
+Express,app .request should extend the request prototype,25.524,0.032999999821186066,114.13397050833333,185.98828125
+Express,app .request should extend the request prototype,25.949,0.035999998450279236,115.11196721666667,207.09375
+Express,app .request should extend the request prototype,25.456,0.050999999046325684,117.76983338333334,183.9375
+Express,app .request should extend the request prototype,25.343,0.03400000184774399,117.55941708333333,185.87890625
+Express,app .request should extend the request prototype,27.841,0.03500000014901161,103.09731609285714,204.30078125
+Express,app .request should extend the request prototype,24.335,0.03099999949336052,118.15037814545454,194.359375
+Express,app .request should extend the request prototype,29.369,0.035999998450279236,95.01570896666666,194.15625
+Express,app .request should extend the request prototype,25.503,0.03200000151991844,114.73698395833334,204.3203125

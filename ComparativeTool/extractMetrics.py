@@ -89,7 +89,8 @@ def extractTestCaseData(data, app):
             # ONLY WHEN ALL COMPONENTS
             #if len(components.values()) < 4: continue
             for component in components.values():
-                sumCpu += statistics.mean(component['cpu']) if len(component['cpu']) > 0 else 0.0
+                sumCpu += max(component['cpu']) if len(component['cpu']) > 0 else 0.0
+                print(sumCpu)
                 sumMemory += max(component['mem'], default=0)
             memMetrics.append(sumMemory)
             cpuMetrics.append(sumCpu)
@@ -107,7 +108,7 @@ def extractTestCaseData(data, app):
 
 if __name__ == "__main__":
 
-    MAIN_PATH = "/home/ubuntu/E2EDataset"
+    MAIN_PATH = "./results/"
 
     apps = [f for f in listdir(MAIN_PATH) if isdir(join(MAIN_PATH, f))]
 

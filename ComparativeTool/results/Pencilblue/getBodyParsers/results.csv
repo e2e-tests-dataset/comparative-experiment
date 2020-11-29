@@ -1,0 +1,11 @@
+app,name,totalTime,testTime,avgCpu,maxMem
+Pencilblue,RequestHandler RequestHandler.getBodyParsers should return the default list of body parsers,48.067,0.0020000000949949026,106.70559396571429,449.0078125
+Pencilblue,RequestHandler RequestHandler.getBodyParsers should return the default list of body parsers,47.472,0.0020000000949949026,112.36340402352941,438.453125
+Pencilblue,RequestHandler RequestHandler.getBodyParsers should return the default list of body parsers,56.104,0.003000000026077032,88.14259642619048,469.44921875
+Pencilblue,RequestHandler RequestHandler.getBodyParsers should return the default list of body parsers,48.603,0.003000000026077032,107.25629404571428,465.1015625
+Pencilblue,RequestHandler RequestHandler.getBodyParsers should return the default list of body parsers,48.861,0.0020000000949949026,108.2184579,449.59375
+Pencilblue,RequestHandler RequestHandler.getBodyParsers should return the default list of body parsers,49.511,0.004999999888241291,111.54000897222222,473.42578125
+Pencilblue,RequestHandler RequestHandler.getBodyParsers should return the default list of body parsers,49.564,0.0020000000949949026,103.16196169166666,442.765625
+Pencilblue,RequestHandler RequestHandler.getBodyParsers should return the default list of body parsers,48.168,0.0020000000949949026,112.1183300882353,447.65234375
+Pencilblue,RequestHandler RequestHandler.getBodyParsers should return the default list of body parsers,46.743,0.0020000000949949026,111.60360183823529,475.26953125
+Pencilblue,RequestHandler RequestHandler.getBodyParsers should return the default list of body parsers,49.625,0.0020000000949949026,108.78516642,449.55859375

@@ -1,0 +1,11 @@
+app,name,totalTime,testTime,avgCpu,maxMem
+Bower,Resolver .getSource should return the resolver source,36.14,0.0020000000949949026,102.84212354285714,279.90234375
+Bower,Resolver .getSource should return the resolver source,34.038,0.0020000000949949026,99.53407263809524,272.71484375
+Bower,Resolver .getSource should return the resolver source,31.852,0.0020000000949949026,116.3881292631579,275.375
+Bower,Resolver .getSource should return the resolver source,30.134,0.0010000000474974513,124.32745329375001,273.26171875
+Bower,Resolver .getSource should return the resolver source,29.743,0.0020000000949949026,124.79819280625,273.0390625
+Bower,Resolver .getSource should return the resolver source,31.058,0.0020000000949949026,121.73610498333333,273.81640625
+Bower,Resolver .getSource should return the resolver source,33.22,0.0020000000949949026,111.18100144,295.3828125
+Bower,Resolver .getSource should return the resolver source,29.667,0.0020000000949949026,118.69851582941176,276.421875
+Bower,Resolver .getSource should return the resolver source,33.989,0.0020000000949949026,100.96436569,296.25
+Bower,Resolver .getSource should return the resolver source,29.481,0.0020000000949949026,124.1919567625,270.91796875

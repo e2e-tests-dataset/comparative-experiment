@@ -1,0 +1,11 @@
+app,name,totalTime,testTime,avgCpu,maxMem
+Shields,The text measurer should produce the same length as before,54.546,0.061000000685453415,122.36193913902439,579.7265625
+Shields,The text measurer should produce the same length as before,57.63,0.06199999898672104,118.43188799302325,578.23828125
+Shields,The text measurer should produce the same length as before,57.83,0.06199999898672104,119.79792145681819,582.13671875
+Shields,The text measurer should produce the same length as before,55.443,0.06800000369548798,124.52399308292684,581.89453125
+Shields,The text measurer should produce the same length as before,58.74,0.06700000166893005,119.88077516444444,535.703125
+Shields,The text measurer should produce the same length as before,59.418,0.06599999964237213,121.92011722222222,555.7890625
+Shields,The text measurer should produce the same length as before,57.824,0.07199999690055847,121.69310436818182,577.21484375
+Shields,The text measurer should produce the same length as before,58.366,0.06700000166893005,121.75406333863636,577.453125
+Shields,The text measurer should produce the same length as before,56.509,0.06199999898672104,124.08229134418605,592.671875
+Shields,The text measurer should produce the same length as before,55.514,0.061000000685453415,121.04704151190477,587.41796875
