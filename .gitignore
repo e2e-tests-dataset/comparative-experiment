@@ -136,4 +136,5 @@ dmypy.json
 !iteration⁻_*.log
 
 BUGSJS/docker-environment/
+DEFECTS4J/defects4j/
 ComparativeTool/outputImages/**
