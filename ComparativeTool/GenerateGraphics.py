@@ -68,8 +68,6 @@ def generateBoxPlot(df, column_name):
     plt.suptitle('')
     plot.set_xlabel("")
     tikzplotlib.save('%s.tex'%column_name, axis_width="12cm", axis_height="5cm")
-    #plt.savefig("%s.pdf"%column_name, format="pdf")
-    #plt.savefig('histogram.pgf')
 
 
 # In[8]:
