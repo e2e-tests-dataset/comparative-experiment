@@ -90,7 +90,6 @@ def extractTestCaseData(data, app):
             #if len(components.values()) < 4: continue
             for component in components.values():
                 sumCpu += max(component['cpu']) if len(component['cpu']) > 0 else 0.0
-                print(sumCpu)
                 sumMemory += max(component['mem'], default=0)
             memMetrics.append(sumMemory)
             cpuMetrics.append(sumCpu)

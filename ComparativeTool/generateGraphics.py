@@ -31,11 +31,12 @@ dfg = df.groupby(['app','name'])
 
 
 # Get Median of times and Mean of avgCpu and maxMem
-pd.concat([
+table = pd.concat([
     dfg.median()[['totalTime']],
     dfg.median()[['testTime']],
     dfg.mean()[['avgCpu', 'maxMem']]]
 , axis=1, join='inner')
+table.to_csv('./results/resume.csv')
 
 
 # In[5]:
@@ -67,7 +68,7 @@ def generateBoxPlot(df, column_name):
     plt.title("")
     plt.suptitle('')
     plot.set_xlabel("")
-    tikzplotlib.save('%s.tex'%column_name, axis_width="12cm", axis_height="5cm")
+    tikzplotlib.save('outputImages/%s.tex'%column_name, axis_width="12cm", axis_height="5cm")
 
 
 # In[8]:
