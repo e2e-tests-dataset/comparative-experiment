@@ -133,7 +133,7 @@ Inside this project, create a new TJob for each test.
 
 ## Step 5: Run all TJobs
 
-- Run each TJob 10 times (Play buttom)
+- Run each TJob 10 times (Play button)
 - Do not run them concurrently
 - Each time you run a TJob, a TJobExecution will be created
 
