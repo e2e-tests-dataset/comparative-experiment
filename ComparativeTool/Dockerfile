@@ -1,6 +1,6 @@
 FROM python:3.8
 
-RUN apt-get -y update && pip install pandas
+RUN apt-get -y update && pip install pandas && pip install matplotlib && pip install tikzplotlib
 
 RUN useradd -m ubuntu
 USER ubuntu
