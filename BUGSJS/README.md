@@ -3,7 +3,7 @@
 ## Step 1: Install Docker and Elastest
 
 - [Install Docker](https://docs.docker.com/get-docker/)
-- Install ElastestFollow (See [official documentation](https://elastest.io/docs/tutorials/getting-started/))
+- Install Elastest (See [official documentation](https://elastest.io/docs/tutorials/getting-started/))
 
 
 ```
@@ -50,6 +50,38 @@ Inside this project, create a new TJob for each test.
         python /work/clean.py /tmp/bower/test-results.xml;
     ```
 
+- For test `getTarget` of `Bower`
+  
+  - TJobName: `BOWER_TEST_2_getTarget`
+  - Test Result Path: `/tmp/bower/test-results.xml`
+  - Enviroment docker image: `bugsjs:quatic-2020`
+  - Commands:
+    ```
+        cd /work/bug-dataset/;
+        python3 main.py -p Bower -b 1 -t checkout -v fixed -o /tmp/;
+        cd /tmp/bower/;
+        npm install;
+        npm install mocha-junit-reporter --save-dev;
+        ./node_modules/.bin/_mocha --grep "Resolver .getTarget should return the resolver target" --reporter mocha-junit-reporter test/test.js;
+        python /work/clean.py /tmp/bower/test-results.xml;
+    ```
+
+- For test `hasNew` of `Bower`
+  
+  - TJobName: `BOWER_TEST_3_hasNew`
+  - Test Result Path: `/tmp/bower/test-results.xml`
+  - Enviroment docker image: `bugsjs:quatic-2020`
+  - Commands:
+    ```
+        cd /work/bug-dataset/;
+        python3 main.py -p Bower -b 1 -t checkout -v fixed -o /tmp/;
+        cd /tmp/bower/;
+        npm install;
+        npm install mocha-junit-reporter --save-dev;
+        ./node_modules/.bin/_mocha --grep "Resolver .hasNew should resolve to true by default" --reporter mocha-junit-reporter test/test.js;
+        python /work/clean.py /tmp/bower/test-results.xml;
+    ```
+
 - For test `AppRequest` of `Express`
   
   - TJobName: `EXPRESS_TEST_1_AppRequest`
@@ -66,10 +98,42 @@ Inside this project, create a new TJob for each test.
         python /work/clean.py /tmp/express/test-results.xml;
     ```
 
+- For test `AppResponse` of `Express`
+  
+  - TJobName: `EXPRESS_TEST_2_AppResponse`
+  - Test Result Path: `/tmp/express/test-results.xml`
+  - Enviroment docker image: `bugsjs:quatic-2020`
+  - Commands:
+    ```
+        cd /work/bug-dataset/;
+        python3 main.py -p Express -b 1 -t checkout -v fixed -o /tmp/;
+        cd /tmp/express/;
+        npm install;
+        npm install mocha-junit-reporter --save-dev;
+        ./node_modules/.bin/_mocha --grep "app .response should extend the response prototype" --reporter mocha-junit-reporter test/app.response.js;
+        python /work/clean.py /tmp/express/test-results.xml;
+    ```
+
+- For test `AppUse` of `Express`
+  
+  - TJobName: `EXPRESS_TEST_3_AppUse`
+  - Test Result Path: `/tmp/express/test-results.xml`
+  - Enviroment docker image: `bugsjs:quatic-2020`
+  - Commands:
+    ```
+        cd /work/bug-dataset/;
+        python3 main.py -p Express -b 1 -t checkout -v fixed -o /tmp/;
+        cd /tmp/express/;
+        npm install;
+        npm install mocha-junit-reporter --save-dev;
+        ./node_modules/.bin/_mocha --grep "app .use\(app\) should mount the app" --reporter mocha-junit-reporter test/app.use.js;
+        python /work/clean.py /tmp/express/test-results.xml;
+    ```
+
 - For test `CliEngine` of `Eslint`
   
   - TJobName: `ESLINT_TEST_1_CliEngine`
-  - Test Result Path: `PATH`
+  - Test Result Path: `/tmp/eslint/test-results.xml`
   - Enviroment docker image: `bugsjs:quatic-2020`
   - Commands:
     ```
@@ -79,6 +143,38 @@ Inside this project, create a new TJob for each test.
         npm install;
         npm install mocha-junit-reporter --save-dev;
         node_modules/.bin/_mocha --grep "should report 5 message when using local cwd .eslintrc" --reporter mocha-junit-reporter tests/lib/cli-engine.js;
+        python /work/clean.py /tmp/eslint/test-results.xml;
+    ```
+
+- For test `IgnoredPaths` of `Eslint`
+  
+  - TJobName: `ESLINT_TEST_2_IgnoredPaths`
+  - Test Result Path: `/tmp/eslint/test-results.xml`
+  - Enviroment docker image: `bugsjs:quatic-2020`
+  - Commands:
+    ```
+        cd /work/bug-dataset/;
+        python3 main.py -p Eslint -b 1 -t checkout -v fixed -o /tmp/;
+        cd /tmp/eslint/;
+        npm install;
+        npm install mocha-junit-reporter --save-dev;
+        node_modules/.bin/_mocha --grep "IgnoredPaths initialization should load .eslintignore from cwd when explicitly passed" --reporter mocha-junit-reporter tests/lib/ignored-paths.js;
+        python /work/clean.py /tmp/eslint/test-results.xml;
+    ```
+
+- For test `Rules` of `Eslint`
+  
+  - TJobName: `ESLINT_TEST_3_Rules`
+  - Test Result Path: `/tmp/eslint/test-results.xml`
+  - Enviroment docker image: `bugsjs:quatic-2020`
+  - Commands:
+    ```
+        cd /work/bug-dataset/;
+        python3 main.py -p Eslint -b 1 -t checkout -v fixed -o /tmp/;
+        cd /tmp/eslint/;
+        npm install;
+        npm install mocha-junit-reporter --save-dev;
+        node_modules/.bin/_mocha --grep "rules when given an invalid rules directory should log an error and exit" --reporter mocha-junit-reporter tests/lib/rules.js;
         python /work/clean.py /tmp/eslint/test-results.xml;
     ```
 
@@ -98,6 +194,38 @@ Inside this project, create a new TJob for each test.
         python /work/clean.py /tmp/pencilblue/test-results.xml;
     ```
 
+- For test `getIdWhere` of `PencilBlue`
+  
+  - TJobName: `PENCLBLUE_TEST_2_getIdWhere`
+  - Test Result Path: `/tmp/pencilblue/test-results.xml`
+  - Enviroment docker image: `bugsjs:quatic-2020`
+  - Commands:
+    ```
+        cd /work/bug-dataset/;
+        python3 main.py -p Pencilblue -b 1 -t checkout -v fixed -o /tmp/;
+        cd /tmp/pencilblue/;
+        npm install;
+        npm install mocha-junit-reporter --save-dev;
+        node_modules/.bin/_mocha --grep "BaseObjectService BaseObjectService.getIdWhere should throw when passed null as the parameter" --reporter mocha-junit-reporter test/include/service/base_object_service_tests.js;
+        python /work/clean.py /tmp/pencilblue/test-results.xml;
+    ```
+
+- For test `getEmbedUrl` of `PencilBlue`
+  
+  - TJobName: `PENCLBLUE_TEST_3_getEmbedUrl`
+  - Test Result Path: `/tmp/pencilblue/test-results.xml`
+  - Enviroment docker image: `bugsjs:quatic-2020`
+  - Commands:
+    ```
+        cd /work/bug-dataset/;
+        python3 main.py -p Pencilblue -b 1 -t checkout -v fixed -o /tmp/;
+        cd /tmp/pencilblue/;
+        npm install;
+        npm install mocha-junit-reporter --save-dev;
+        node_modules/.bin/_mocha --grep "BaseMediaRenderer.getEmbedUrl should not modify media id" --reporter mocha-junit-reporter test/include/service/media/renderers/media_root_tests.js
+        python /work/clean.py /tmp/pencilblue/test-results.xml;
+    ```
+
 - For test `measureText` of `Shields`
   
   - TJobName: `SHIELDS_TEST_1_measureText`
@@ -113,6 +241,38 @@ Inside this project, create a new TJob for each test.
         node_modules/.bin/_mocha --reporter mocha-junit-reporter lib/measure-text.spec.js;
         python /work/clean.py /tmp/shields/test-results.xml;
     ```
+- For test `nodeifySync ` of `Shields`
+  
+  - TJobName: `SHIELDS_TEST_2_nodeifySync`
+  - Test Result Path: `/tmp/shields/test-results.xml`
+  - Enviroment docker image: `bugsjs:quatic-2020`
+  - Commands:
+    ```
+        cd /work/bug-dataset/;
+        python3 main.py -p Shields -b 1 -t checkout -v fixed -o /tmp/;
+        cd /tmp/shields/;
+        npm install;
+        npm install mocha-junit-reporter --save-dev;
+        node_modules/.bin/_mocha --grep "nodeifySync Should return the result via the callback" --reporter mocha-junit-reporter lib/nodeify-sync.spec.js;
+        python /work/clean.py /tmp/shields/test-results.xml;
+    ```
+
+- For test `lru-cache` of `Shields`
+  
+  - TJobName: `SHIELDS_TEST_3_lru-cache`
+  - Test Result Path: `/tmp/shields/test-results.xml`
+  - Enviroment docker image: `bugsjs:quatic-2020`
+  - Commands:
+    ```
+        cd /work/bug-dataset/;
+        python3 main.py -p Shields -b 1 -t checkout -v fixed -o /tmp/;
+        cd /tmp/shields/;
+        npm install;
+        npm install mocha-junit-reporter --save-dev;
+        node_modules/.bin/_mocha --grep "The LRU cache should support being called without new" --reporter mocha-junit-reporter lib/lru-cache.spec.js;
+        python /work/clean.py /tmp/shields/test-results.xml;
+    ```
+    
 
 ## Step 5: Run all TJobs
 
