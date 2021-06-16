@@ -41,8 +41,33 @@ Inside this project, create a new TJob for each test.
     ```
         defects4j checkout -p Lang -v 1f -w /tmp/LangBase;
         cd /tmp/LangBase/ && git checkout trunk;
-        cp /work/configFiles/langFiles/pom.xml /tmp/LangBase/pom.xml;
+        cp /work/langFiles/pom.xml /tmp/LangBase/pom.xml;
         mvn -B -Dtest=org.apache.commons.lang3.LocaleUtilsTest#testLang328 test;
+    ```
+- For test `test_getEnum` of `Lang`
+  
+  - TJobName: `LANG_TEST_2_test_getEnum`
+  - Test Result Path: `/tmp/LangBase/target/surefire-reports/`
+  - Enviroment docker image: `defects4j:quatic-2020`
+  - Commands:
+    ```
+        defects4j checkout -p Lang -v 1f -w /tmp/LangBase;
+        cd /tmp/LangBase/ && git checkout trunk;
+        cp /work/langFiles/pom.xml /tmp/LangBase/pom.xml;
+        mvn -B -Dtest=org.apache.commons.lang3.EnumUtilsTest#test_getEnum test;
+    ```
+
+- For test `test_testIsAlpha` of `Lang`
+  
+  - TJobName: `LANG_TEST_3_testIsAlpha`
+  - Test Result Path: `/tmp/LangBase/target/surefire-reports/`
+  - Enviroment docker image: `defects4j:quatic-2020`
+  - Commands:
+    ```
+        defects4j checkout -p Lang -v 1f -w /tmp/LangBase;
+        cd /tmp/LangBase/ && git checkout trunk;
+        cp /work/langFiles/pom.xml /tmp/LangBase/pom.xml;
+        mvn -B -Dtest=org.apache.commons.lang3.StringUtilsIsTest#testIsAlpha test;
     ```
 
 - For test `testSerialization` of `Chart`
@@ -54,21 +79,73 @@ Inside this project, create a new TJob for each test.
     ```
         defects4j checkout -p Chart -v 1f -w /tmp/ChartBase;
         cd /tmp/ChartBase/ && git checkout trunk;
-        cp /work/configFiles/chartFiles/build.xml /tmp/ChartBase/ant/build.xml;
+        cp /work/chartFiles/build.xml /tmp/ChartBase/ant/build.xml;
         ant -f ant/build.xml -DtestClass=org.jfree.chart.plot.junit.IntervalMarkerTests -DtestMethod=testSerialization test-only;
+    ```
+
+- For test `testCloning` of `Chart`
+  
+  - TJobName: `CHART_TEST_2_testCloning`
+  - Test Result Path: `/tmp/ChartBase/metrics-results/`
+  - Enviroment docker image: `defects4j:quatic-2020`
+  - Commands:
+    ```
+        defects4j checkout -p Chart -v 1f -w /tmp/ChartBase;
+        cd /tmp/ChartBase/ && git checkout trunk;
+        cp /work/chartFiles/build.xml /tmp/ChartBase/ant/build.xml;
+        ant -f ant/build.xml -DtestClass=org.jfree.chart.needle.junit.PointerNeedleTests -DtestMethod=testCloning test-only;
+    ```
+
+- For test `testGenerateURL` of `Chart`
+  
+  - TJobName: `CHART_TEST_3_testGenerateURL`
+  - Test Result Path: `/tmp/ChartBase/metrics-results/`
+  - Enviroment docker image: `defects4j:quatic-2020`
+  - Commands:
+    ```
+        defects4j checkout -p Chart -v 1f -w /tmp/ChartBase;
+        cd /tmp/ChartBase/ && git checkout trunk;
+        cp /work/chartFiles/build.xml /tmp/ChartBase/ant/build.xml;
+        ant -f ant/build.xml -DtestClass=org.jfree.chart.urls.junit.StandardCategoryURLGeneratorTests -DtestMethod=testGenerateURL test-only;
     ```
 
 - For test `testGetFunctionForAstNode` of `Closure`
   
   - TJobName: `CLOSURE_TEST_1_testGetFunctionForAstNode`
-  - Test Result Path: `PATH`
+  - Test Result Path: `/tmp/ClosureBase/build/surefire-reports/`
   - Enviroment docker image: `defects4j:quatic-2020`
   - Commands:
     ```
         defects4j checkout -p Closure -v 1f -w /tmp/ClosureBase;
-        cp /work/configFiles/closureFiles/build.xml /tmp/ClosureBase/build.xml;
+        cp /work/closureFiles/build.xml /tmp/ClosureBase/build.xml;
         cd /tmp/ClosureBase/;
         ant -DtestClass=com.google.javascript.jscomp.CallGraphTest -DtestMethod=testGetFunctionForAstNode test-only;
+    ```
+
+- For test `testRegExp` of `Closure`
+  
+  - TJobName: `CLOSURE_TEST_2_testRegExp`
+  - Test Result Path: `/tmp/ClosureBase/build/surefire-reports/`
+  - Enviroment docker image: `defects4j:quatic-2020`
+  - Commands:
+    ```
+        defects4j checkout -p Closure -v 1f -w /tmp/ClosureBase;
+        cp /work/closureFiles/build.xml /tmp/ClosureBase/build.xml;
+        cd /tmp/ClosureBase/;
+        ant -DtestClass=com.google.javascript.jscomp.CheckRegExpTest -DtestMethod=testRegExp test-only;
+    ```
+
+- For test `testMergeOverflowGraciously` of `Closure`
+  
+  - TJobName: `CLOSURE_TEST_3_testMergeOverflowGraciously`
+  - Test Result Path: `/tmp/ClosureBase/build/surefire-reports/`
+  - Enviroment docker image: `defects4j:quatic-2020`
+  - Commands:
+    ```
+        defects4j checkout -p Closure -v 1f -w /tmp/ClosureBase;
+        cp /work/closureFiles/build.xml /tmp/ClosureBase/build.xml;
+        cd /tmp/ClosureBase/;
+        ant -DtestClass=com.google.javascript.rhino.NodeTest -DtestMethod=testMergeOverflowGraciously test-only;
     ```
 
 - For test `testInterval` of `Math`
@@ -80,8 +157,33 @@ Inside this project, create a new TJob for each test.
     ```
         defects4j checkout -p Math -v 1f -w /tmp/MathBase;
         cd /tmp/MathBase/ && git checkout trunk;
-        cp /work/configFiles/mathFiles/pom.xml /tmp/MathBase/pom.xml;
+        cp /work/mathFiles/pom.xml /tmp/MathBase/pom.xml;
         mvn -B -Dtest=org.apache.commons.math3.geometry.euclidean.oned.IntervalsSetTest#testInterval test;
+    ```
+
+- For test `testCluster` of `Math`
+  
+  - TJobName: `MATH_TEST_2_testCluster`
+  - Test Result Path: `/tmp/MathBase/target/surefire-reports/`
+  - Enviroment docker image: `defects4j:quatic-2020`
+  - Commands:
+    ```
+        defects4j checkout -p Math -v 1f -w /tmp/MathBase;
+        cd /tmp/MathBase/ && git checkout trunk;
+        cp /work/mathFiles/pom.xml /tmp/MathBase/pom.xml;
+        mvn -B -Dtest=org.apache.commons.math3.ml.clustering.FuzzyKMeansClustererTest#testCluster test;
+    ```
+- For test `testLogGammaNegative` of `Math`
+  
+  - TJobName: `MATH_TEST_3_testLogGammaNegative`
+  - Test Result Path: `/tmp/MathBase/target/surefire-reports/`
+  - Enviroment docker image: `defects4j:quatic-2020`
+  - Commands:
+    ```
+        defects4j checkout -p Math -v 1f -w /tmp/MathBase;
+        cd /tmp/MathBase/ && git checkout trunk;
+        cp /work/mathFiles/pom.xml /tmp/MathBase/pom.xml;
+        mvn -B -Dtest=org.apache.commons.math3.special.GammaTest#testLogGammaNegative test;
     ```
 
 - For test `testIsContiguous_RP` of `Time`
@@ -93,8 +195,34 @@ Inside this project, create a new TJob for each test.
     ```
         defects4j checkout -p Time -v 1f -w /tmp/TimeBase;
         cd /tmp/TimeBase/ && git checkout trunk;
-        cp /work/configFiles/timeFiles/pom.xml /tmp/TimeBase/pom.xml;
+        cp /work/timeFiles/pom.xml /tmp/TimeBase/pom.xml;
         mvn -B -Dtest=org.joda.time.TestDateTimeUtils#testIsContiguous_RP test
+    ```
+
+- For test `testBasicComps1` of `Time`
+  
+  - TJobName: `TIME_TEST_2_testBasicComps1`
+  - Test Result Path: `/tmp/TimeBase/target/surefire-reports/`
+  - Enviroment docker image: `defects4j:quatic-2020`
+  - Commands:
+    ```
+        defects4j checkout -p Time -v 1f -w /tmp/TimeBase;
+        cd /tmp/TimeBase/
+        cp /work/timeFiles/pom.xml /tmp/TimeBase/pom.xml;
+        mvn -B -Dtest=org.joda.time.TestDateTimeComparator#testBasicComps1 test
+    ```
+
+- For test `testGetMethods` of `Time`
+  
+  - TJobName: `TIME_TEST_3_testGetMethods`
+  - Test Result Path: `/tmp/TimeBase/target/surefire-reports/`
+  - Enviroment docker image: `defects4j:quatic-2020`
+  - Commands:
+    ```
+        defects4j checkout -p Time -v 1f -w /tmp/TimeBase;
+        cd /tmp/TimeBase/ && git checkout trunk;
+        cp /work/timeFiles/pom.xml /tmp/TimeBase/pom.xml;
+        mvn -B -Dtest=org.joda.time.TestHours#testGetMethods test
     ```
 
 ## Step 5: Run all TJobs
