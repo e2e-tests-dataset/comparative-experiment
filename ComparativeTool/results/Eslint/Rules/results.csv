@@ -1,0 +1,11 @@
+app,name,totalTime,testTime,avgCpu,maxMem
+Eslint,rules when given an invalid rules directory should log an error and exit,65.735,0.0020000000949949026,112.45029946666666,1007.35546875
+Eslint,rules when given an invalid rules directory should log an error and exit,64.824,0.003000000026077032,110.41400964915255,925.38671875
+Eslint,rules when given an invalid rules directory should log an error and exit,66.22,0.0020000000949949026,112.41434072333332,1012.109375
+Eslint,rules when given an invalid rules directory should log an error and exit,64.891,0.003000000026077032,113.96228677118644,970.703125
+Eslint,rules when given an invalid rules directory should log an error and exit,64.528,0.0020000000949949026,111.6359338440678,922.74609375
+Eslint,rules when given an invalid rules directory should log an error and exit,70.183,0.0020000000949949026,105.10054164923076,974.1875
+Eslint,rules when given an invalid rules directory should log an error and exit,64.74,0.0020000000949949026,113.70048816101695,956.046875
+Eslint,rules when given an invalid rules directory should log an error and exit,64.407,0.0020000000949949026,110.02842125172414,919.91015625
+Eslint,rules when given an invalid rules directory should log an error and exit,65.041,0.0020000000949949026,113.766132445,990.43359375
+Eslint,rules when given an invalid rules directory should log an error and exit,63.263,0.0020000000949949026,114.65810266491228,897.20703125

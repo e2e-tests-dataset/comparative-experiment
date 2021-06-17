@@ -1,0 +1,11 @@
+app,name,totalTime,testTime,avgCpu,maxMem
+Shields,nodeifySync Should return the result via the callback,72.364,0.0020000000949949026,78.77006622686567,683.9140625
+Shields,nodeifySync Should return the result via the callback,47.199,0.0010000000474974513,123.87756372682927,665.11328125
+Shields,nodeifySync Should return the result via the callback,47.128,0.0010000000474974513,121.83491324878048,664.0859375
+Shields,nodeifySync Should return the result via the callback,47.875,0.0020000000949949026,122.62435508571428,663.546875
+Shields,nodeifySync Should return the result via the callback,45.372,0.0010000000474974513,126.568997125,667.19921875
+Shields,nodeifySync Should return the result via the callback,48.82,0.0010000000474974513,120.06980448604651,666.1953125
+Shields,nodeifySync Should return the result via the callback,45.406,0.0010000000474974513,126.21476025526316,659.8984375
+Shields,nodeifySync Should return the result via the callback,48.107,0.0010000000474974513,124.86091044285715,618.6875
+Shields,nodeifySync Should return the result via the callback,46.91,0.0020000000949949026,125.12894371463415,675.62890625
+Shields,nodeifySync Should return the result via the callback,52.118,0.0020000000949949026,111.64649103478261,657.3515625

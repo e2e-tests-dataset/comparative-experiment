@@ -1,0 +1,11 @@
+app,name,totalTime,testTime,avgCpu,maxMem
+Bower,Resolver .getTarget should return the resolver target,22.416,0.0010000000474974513,122.71984277647059,310.0546875
+Bower,Resolver .getTarget should return the resolver target,22.074,0.0010000000474974513,122.0083538764706,315.453125
+Bower,Resolver .getTarget should return the resolver target,22.097,0.0020000000949949026,121.66706346470589,310.578125
+Bower,Resolver .getTarget should return the resolver target,22.397,0.0020000000949949026,122.19576956470588,316.80078125
+Bower,Resolver .getTarget should return the resolver target,22.742,0.0010000000474974513,119.79041234705882,314.76953125
+Bower,Resolver .getTarget should return the resolver target,22.541,0.0020000000949949026,124.14714707058823,339.38671875
+Bower,Resolver .getTarget should return the resolver target,22.736,0.0010000000474974513,120.91595354705882,311.1171875
+Bower,Resolver .getTarget should return the resolver target,21.96,0.0020000000949949026,125.99703044705882,312.91796875
+Bower,Resolver .getTarget should return the resolver target,22.291,0.0020000000949949026,124.42194859411764,334.89453125
+Bower,Resolver .getTarget should return the resolver target,21.71,0.0010000000474974513,127.13362945,317.109375

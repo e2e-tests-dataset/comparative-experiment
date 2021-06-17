@@ -1,0 +1,11 @@
+app,name,totalTime,testTime,avgCpu,maxMem
+Bower,Resolver .hasNew should resolve to true by default,23.296,0.013000000268220901,117.9082070111111,316.87109375
+Bower,Resolver .hasNew should resolve to true by default,24.062,0.012000000104308128,114.27141398333333,311.4765625
+Bower,Resolver .hasNew should resolve to true by default,23.072,0.014000000432133675,122.30015774705882,324.74609375
+Bower,Resolver .hasNew should resolve to true by default,22.563,0.013000000268220901,122.3267443882353,319.1484375
+Bower,Resolver .hasNew should resolve to true by default,22.113,0.013000000268220901,121.97100539411764,311.7734375
+Bower,Resolver .hasNew should resolve to true by default,22.159,0.014000000432133675,124.0728677117647,314.02734375
+Bower,Resolver .hasNew should resolve to true by default,22.676,0.013000000268220901,124.01870984705883,314.40234375
+Bower,Resolver .hasNew should resolve to true by default,22.239,0.013000000268220901,124.99309278235295,309.3984375
+Bower,Resolver .hasNew should resolve to true by default,24.461,0.012000000104308128,114.44989858333334,316.4453125
+Bower,Resolver .hasNew should resolve to true by default,22.417,0.013000000268220901,123.00655085294117,312.9296875

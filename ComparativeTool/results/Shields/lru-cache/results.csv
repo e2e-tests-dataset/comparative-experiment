@@ -1,0 +1,11 @@
+app,name,totalTime,testTime,avgCpu,maxMem
+Shields,The LRU cache should support being called without new,45.234,0.0,125.53993413421053,672.26953125
+Shields,The LRU cache should support being called without new,47.554,0.0010000000474974513,121.32342788095238,696.16796875
+Shields,The LRU cache should support being called without new,46.243,0.0,125.71160056153846,653.3828125
+Shields,The LRU cache should support being called without new,46.93,0.0,122.75086253658536,659.76953125
+Shields,The LRU cache should support being called without new,46.579,0.0010000000474974513,125.44012982926829,661.56640625
+Shields,The LRU cache should support being called without new,47.663,0.0,125.75966736904762,618.140625
+Shields,The LRU cache should support being called without new,45.738,0.0,125.10899081282051,662.9453125
+Shields,The LRU cache should support being called without new,45.367,0.0010000000474974513,128.43912204102566,671.265625
+Shields,The LRU cache should support being called without new,46.276,0.0,126.7593856487805,652.859375
+Shields,The LRU cache should support being called without new,46.068,0.0010000000474974513,126.0709923475,652.78515625

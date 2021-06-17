@@ -1,4 +1,4 @@
-% This file was created by tikzplotlib v0.9.5.
+% This file was created by tikzplotlib v0.9.8.
 \begin{tikzpicture}
 
 \definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
@@ -14,8 +14,18 @@ xmajorgrids,
 xmin=0.5, xmax=9.5,
 xtick style={color=black},
 xtick={1,2,3,4,5,6,7,8,9},
-xticklabel style = {rotate=15.0},
-xticklabels={BJS-appRequest,BJS-executedOnText,BJS-getSource,D4J-testInterval,D4J-testLang328,D4J-testSerialization,E2E-checkCreateCourse,E2E-checkCreateList,E2E-checkShowAdminPage},
+xticklabel style={rotate=25.0},
+xticklabels={
+  BJS-testAppRequest,
+  BJS-testExecutedOnText,
+  BJS-testGetSource,
+  D4J-testInterval,
+  D4J-testLang328,
+  D4J-testSerialization,
+  E2E-checkCreateCourse,
+  E2E-checkCreateList,
+  E2E-checkShowAdminPage
+},
 y grid style={white!69.0196078431373!black},
 ymajorgrids,
 ymin=44.3300650261254, ymax=269.143242636851,
@@ -53,8 +63,8 @@ table {%
 table {%
 1.75 58.0027491434428
 2.25 58.0027491434428
-2.25 61.6658607101211
-1.75 61.6658607101211
+2.25 61.6658607101212
+1.75 61.6658607101212
 1.75 58.0027491434428
 };
 \addplot [color0, opacity=1]
@@ -64,7 +74,7 @@ table {%
 };
 \addplot [color0, opacity=1]
 table {%
-2 61.6658607101211
+2 61.6658607101212
 2 61.6827402786325
 };
 \addplot [black, opacity=1]
@@ -77,7 +87,7 @@ table {%
 1.875 61.6827402786325
 2.125 61.6827402786325
 };
-\addplot [black, mark=*, mark size=3, mark options={solid,fill opacity=0}, only marks]
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0}, only marks]
 table {%
 2 78.7969714868132
 2 68.7559032722772
@@ -166,7 +176,7 @@ table {%
 4.875 144.9188569
 5.125 144.9188569
 };
-\addplot [black, mark=*, mark size=3, mark options={solid,fill opacity=0}, only marks]
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0}, only marks]
 table {%
 5 113.210342566667
 5 94.9608577854167
@@ -255,7 +265,7 @@ table {%
 7.875 142.992695033333
 8.125 142.992695033333
 };
-\addplot [black, mark=*, mark size=3, mark options={solid,fill opacity=0}, only marks]
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0}, only marks]
 table {%
 8 86.5603237333333
 8 116.463138922222
@@ -288,7 +298,7 @@ table {%
 8.875 149.77632335122
 9.125 149.77632335122
 };
-\addplot [black, mark=*, mark size=3, mark options={solid,fill opacity=0}, only marks]
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0}, only marks]
 table {%
 9 112.4924573
 };

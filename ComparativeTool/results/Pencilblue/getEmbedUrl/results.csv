@@ -1,0 +1,11 @@
+app,name,totalTime,testTime,avgCpu,maxMem
+Pencilblue,BaseMediaRenderer BaseMediaRenderer.getEmbedUrl should not modify media id,47.363,0.017000000923871994,86.47091281666667,496.78125
+Pencilblue,BaseMediaRenderer BaseMediaRenderer.getEmbedUrl should not modify media id,39.641,0.017000000923871994,109.42208335588235,533.5390625
+Pencilblue,BaseMediaRenderer BaseMediaRenderer.getEmbedUrl should not modify media id,40.531,0.01899999938905239,108.40558092571429,541.93359375
+Pencilblue,BaseMediaRenderer BaseMediaRenderer.getEmbedUrl should not modify media id,39.575,0.017000000923871994,113.90730602352942,553.58203125
+Pencilblue,BaseMediaRenderer BaseMediaRenderer.getEmbedUrl should not modify media id,37.764,0.01899999938905239,112.787737121875,534.765625
+Pencilblue,BaseMediaRenderer BaseMediaRenderer.getEmbedUrl should not modify media id,39.039,0.017000000923871994,111.41567266363636,534.91796875
+Pencilblue,BaseMediaRenderer BaseMediaRenderer.getEmbedUrl should not modify media id,39.748,0.017000000923871994,110.23924493235295,528.6484375
+Pencilblue,BaseMediaRenderer BaseMediaRenderer.getEmbedUrl should not modify media id,37.145,0.017000000923871994,115.1813017,480.1796875
+Pencilblue,BaseMediaRenderer BaseMediaRenderer.getEmbedUrl should not modify media id,39.535,0.017000000923871994,111.08462565588235,533.70703125
+Pencilblue,BaseMediaRenderer BaseMediaRenderer.getEmbedUrl should not modify media id,40.45,0.020999999716877937,108.77768549714285,520.484375
